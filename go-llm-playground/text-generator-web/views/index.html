@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Text Generator</title>
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Include HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+  </head>
+  <body class="bg-gray-100">
+    <div
+      class="container mx-auto mt-20 p-4 bg-white rounded-lg shadow-md max-w-4xl"
+    >
+      <!-- Flex container for title and Home button -->
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold">AI Text Generator</h1>
+        <a
+          href="/"
+          class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200"
+          >Clear</a
+        >
+      </div>
+      <form
+        hx-post="/generate"
+        hx-target="#result"
+        hx-swap="innerHTML"
+        hx-indicator="#spinner"
+        class="space-y-4"
+      >
+        <div>
+          <label for="prompt" class="block text-sm font-medium text-gray-700"
+            >Enter your prompt:</label
+          >
+          <textarea
+            id="prompt"
+            name="prompt"
+            rows="3"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
+            required
+          ></textarea>
+        </div>
+        <div>
+          <label for="words" class="block text-sm font-medium text-gray-700"
+            >Number of words:</label
+          >
+          <input
+            type="range"
+            id="words"
+            name="words"
+            min="50"
+            max="500"
+            step="10"
+            value="100"
+            class="mt-1 block w-full"
+            required
+          />
+          <small id="wordsValue" class="text-sm text-gray-500"
+            >Selected: 100 words</small
+          >
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200"
+        >
+          Generate
+        </button>
+        <!-- Loading Spinner -->
+        <div id="spinner" class="hidden flex justify-center items-center mt-4">
+          <div
+            class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"
+          ></div>
+        </div>
+      </form>
+      <!-- Result Container -->
+      <div id="result" class="mt-6 p-4 bg-gray-50 rounded-md"></div>
+    </div>
+
+    <script>
+      // Update the displayed value when the slider changes
+      const wordsSlider = document.getElementById("words");
+      const wordsValue = document.getElementById("wordsValue");
+
+      wordsSlider.addEventListener("input", function () {
+        wordsValue.textContent = `Selected: ${this.value} words`;
+      });
+      document.addEventListener("htmx:beforeRequest", function (event) {
+        document.getElementById("spinner").classList.remove("hidden");
+      });
+
+      document.addEventListener("htmx:afterRequest", function (event) {
+        document.getElementById("spinner").classList.add("hidden");
+      });
+
+      // // Debug HTMX requests
+      // document.addEventListener("htmx:beforeRequest", function (event) {
+      //   console.log("HTMX request started");
+      // });
+      //
+      // document.addEventListener("htmx:afterRequest", function (event) {
+      //   console.log("HTMX request completed");
+      // });
+    </script>
+  </body>
+</html>
