@@ -1,25 +1,29 @@
 import gradio as gr
 import requests
 
-def query_golang_app(prompt, model="llama2"):
+def query_golang_app(text):
     # Send request to Golang app
-    url = "http://localhost:8080/api/ollama"
-    payload = {"prompt": prompt, "model": model}
-    response = requests.post(url, json=payload)
+    url = "http://localhost:3000/generate"
+    payload = {"prompt": text}
     
-    if response.status_code == 200:
-        return response.json()["response"]
-    else:
-        return "Error: Could not get response from Golang app"
+    try:
+        response = requests.post(url, json=payload)
 
+        if response.ok:  # Checks for any 2xx status code
+            return response.json().get("generated_text", "No correction generated.")
+        else:
+            return f"Error: {response.status_code} - {response.text}"
+
+    except requests.exceptions.RequestException as e:
+        return f"Request failed: {e}"
 # Define Gradio interface
 interface = gr.Interface(
     fn=query_golang_app,
-    inputs=["text", gr.Dropdown(choices=["llama2", "mistral"], label="Model")],
-    outputs="text",
-    title="Ollama Chat via Golang",
-    description="Enter a prompt and select a model to get a response from Ollama via a Golang backend."
+    inputs=gr.Textbox(lines=5,placeholder="Enter text with grammer or spelling mistakes"),
+    outputs=gr.Textbox(label="Corrected text"),
+    title="AI powered Grammer and Spell Checker",
+    description="Enter a prompt to get a response from Ollama via a Golang backend."
 )
 
-# Launch the interface
-interface.launch()
+if __name__ == "__main__":
+    interface.launch(server_name="0.0.0.0")
