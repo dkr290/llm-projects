@@ -3,5 +3,5 @@ accept: application/json
 content-type: application/json
 
 {
-    "prompt": "Introiduction to AUI"
+    "prompt": "What Are the payment methgods for the product?"
 }
