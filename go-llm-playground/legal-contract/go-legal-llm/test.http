@@ -1,0 +1,7 @@
+POST http://localhost:3000/generate
+accept: application/json
+content-type: application/json
+
+{
+    "prompt": "What Are the payment methgods for the product?"
+}
