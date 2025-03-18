@@ -140,7 +140,7 @@ func StoreDocumentsConcurrently(
 
 func main() {
 	client, err := qdrant.NewClient(&qdrant.Config{
-		Host: "pigeon-qdrant.k8s-dev.bankingcircle.net",
+		Host: "qdrant",
 		Port: 6334,
 	})
 	// opensearch.NewClient(opensearch.Config{
