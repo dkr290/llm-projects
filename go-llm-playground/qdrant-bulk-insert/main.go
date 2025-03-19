@@ -143,11 +143,6 @@ func main() {
 		Host: "qdrant",
 		Port: 6334,
 	})
-	// opensearch.NewClient(opensearch.Config{
-	// 	Addresses: []string{"https://aa-opensearch-api.k8s-dev.bankingcircle.net"},
-	// 	Username:  "admin",
-	// 	Password:  "H07uEbkP*cUBu_gJKr34zf?",
-	// })
 	if err != nil {
 		log.Fatalf("Error creating OpenSearch client: %v", err)
 	}
