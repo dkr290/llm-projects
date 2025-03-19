@@ -163,4 +163,58 @@ func main() {
 	if err := StoreDocumentsConcurrently(ctx, client, indexName, numDocs, batchSize, numWorkers); err != nil {
 		log.Fatalf("Error storing documents: %v", err)
 	}
+
+	CallBulkRead(ctx, client, indexName)
+}
+
+func CallBulkRead(ctx context.Context, client *opensearch.Client, indexName string) {
+	ids := make([]string, 1000)
+	for i := range 1000 {
+		ids[i] = fmt.Sprintf("%d", rand.Intn(100000)+1) // Random IDs between 1 and 1,000,000
+	}
+
+	// Measure bulk read performance
+	readTime, err := BulkReadDocuments(ctx, client, indexName, ids)
+	if err != nil {
+		log.Fatalf("Error reading documents: %v", err)
+	}
+
+	log.Printf("Bulk read of 1000 documents completed in: %v", readTime)
+}
+
+func BulkReadDocuments(
+	ctx context.Context,
+	client *opensearch.Client,
+	indexName string,
+	ids []string,
+) (time.Duration, error) {
+	start := time.Now() // Start time for the bulk read operation
+
+	// Prepare the request body for multi-get
+	var requestBody strings.Builder
+	requestBody.WriteString(`{ "docs": [`)
+	for i, id := range ids {
+		if i > 0 {
+			requestBody.WriteString(",")
+		}
+		requestBody.WriteString(fmt.Sprintf(`{ "_index": "%s", "_id": "%s" }`, indexName, id))
+	}
+	requestBody.WriteString(`] }`)
+
+	// Perform the multi-get request
+	req := opensearchapi.MgetRequest{
+		Body: strings.NewReader(requestBody.String()),
+	}
+
+	res, err := req.Do(ctx, client)
+	if err != nil {
+		return 0, fmt.Errorf("failed to perform bulk read: %w", err)
+	}
+	defer res.Body.Close()
+
+	if res.IsError() {
+		return 0, fmt.Errorf("error in bulk read: %s", res.String())
+	}
+
+	return time.Since(start), nil // Return the time taken for the bulk read
 }

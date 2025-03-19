@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/qdrant/go-client/qdrant"
+	"google.golang.org/grpc"
 )
 
 // Document represents a document to be stored in OpenSearch.
@@ -157,4 +158,56 @@ func main() {
 	if err := StoreDocumentsConcurrently(ctx, client, indexName, numDocs, batchSize, numWorkers); err != nil {
 		log.Fatalf("Error storing documents: %v", err)
 	}
+
+	CallBulkRead(ctx)
+}
+
+func CallBulkRead(ctx context.Context) {
+	indexName := "test_collection"
+	ids := make([]*qdrant.PointId, 1000)
+	for i := 0; i < 1000; i++ {
+		// Create a PointId with a random numeric ID
+		ids[i] = &qdrant.PointId{
+			PointIdOptions: &qdrant.PointId_Num{
+				Num: uint64(rand.Intn(100000) + 1), // Random IDs between 1 and 1,000,000
+			},
+		}
+	}
+
+	conn, err := grpc.Dial("127.0.0.1:6334", grpc.WithInsecure())
+	if err != nil {
+		log.Fatalf("Failed to connect to Qdrant: %v", err)
+	}
+	defer conn.Close()
+	client1 := qdrant.NewPointsClient(conn)
+	// Measure bulk read performance
+	readTime, err := BulkReadDocuments(ctx, client1, indexName, ids)
+	if err != nil {
+		log.Fatalf("Error reading documents: %v", err)
+	}
+
+	log.Printf("Bulk read of 1000 documents completed in: %v", readTime)
+}
+
+func BulkReadDocuments(
+	ctx context.Context,
+	client qdrant.PointsClient,
+	collectionName string,
+	ids []*qdrant.PointId,
+) (time.Duration, error) {
+	start := time.Now() // Start time for the bulk read operation
+
+	// Prepare the request to get points by IDs
+	request := &qdrant.GetPoints{
+		CollectionName: collectionName,
+		Ids:            ids,
+	}
+
+	// Perform the get points request
+	_, err := client.Get(ctx, request)
+	if err != nil {
+		return 0, fmt.Errorf("failed to perform bulk read: %w", err)
+	}
+
+	return time.Since(start), nil // Return the time taken for the bulk read
 }
