@@ -5,20 +5,20 @@ import (
 	"flag"
 	"fmt"
 	"log/slog"
-	"pdf-extract/pkg/pdf"
-	"pdf-extract/pkg/response"
+	"pdf-extract-opensearch/pkg/collection"
+	"pdf-extract-opensearch/pkg/pdf"
 	"time"
 )
 
 var (
 	initVectors bool
 
-	userQuery        string
-	chatModel        = "llama3.2"
-	embedModel       = "nomic-embed-text"
-	ollamaUrl        = "http://172.22.0.5/ollama"
-	qUrl             = "http://qdrant.172.22.0.5.nip.io:6333"
-	vectorCollection = "vector_store1"
+	userQuery   string
+	chatModel   = "llama3.2"
+	embedModel  = "nomic-embed-text"
+	ollamaUrl   = "http://172.22.0.5/ollama"
+	esUrl       = "http://opensearhch"
+	vectorIndex = "vector_store1"
 )
 
 func main() {
@@ -32,13 +32,13 @@ func main() {
 		embed_run()
 	}
 
-	if userQuery != "" {
-		r := response.New(chatModel, embedModel, ollamaUrl, qUrl, vectorCollection, userQuery, ctx)
-		if err := r.QuestionResponse(); err != nil {
-			slog.Error("unexpected error of question responce", "error", err)
-		}
-
-	}
+	// if userQuery != "" {
+	// 	r := response.New(chatModel, embedModel, ollamaUrl, qUrl, vectorCollection, userQuery, ctx)
+	// 	if err := r.QuestionResponse(); err != nil {
+	// 		slog.Error("unexpected error of question responce", "error", err)
+	// 	}
+	//
+	// }
 }
 
 func embed_run() {
@@ -64,18 +64,22 @@ func embed_run() {
 		return
 	}
 	fmt.Println("Adding metadata to the chunks")
-
-	err = p.GenEmbeddings(
-		mdTextChunks,
-		"nomic-embed-text",
-		"http://172.22.0.5/ollama",
-		"http://qdrant.172.22.0.5.nip.io:6333",
-		"vector_store1",
-	)
+	err = collection.CreateIndex(vectorIndex, esUrl)
 	if err != nil {
-		slog.Error("error adding the embeddings", "error", err)
+		slog.Error("error creating opensearhc index", "error", err)
 	}
-	fmt.Println("Finish with vector embedding")
+
+	// err = p.GenEmbeddings(
+	// 	mdTextChunks,
+	// 	"nomic-embed-text",
+	// 	"http://172.22.0.5/ollama",
+	// 	"http://qdrant.172.22.0.5.nip.io:6333",
+	// 	"vector_store1",
+	// )
+	// if err != nil {
+	// 	slog.Error("error adding the embeddings", "error", err)
+	// }
+	// fmt.Println("Finish with vector embedding")
 }
 
 // curl -X PUT "http://localhost:6333/collections/my_collection" \
