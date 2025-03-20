@@ -11,12 +11,19 @@ import (
 	"github.com/opensearch-project/opensearch-go/opensearchapi"
 )
 
-func CreateIndex(index string, address string) error {
+func CreateIndex(index string, address string, username, password string) error {
 	// Create a client instance
+	fmt.Println(address)
+	fmt.Println(index)
+	fmt.Println(username)
+	fmt.Println(password)
 	cfg := opensearch.Config{
 		Addresses: []string{
 			address, // Replace with your OpenSearch URL
+
 		},
+		Username: username,
+		Password: password,
 	}
 	client, err := opensearch.NewClient(cfg)
 	if err != nil {
