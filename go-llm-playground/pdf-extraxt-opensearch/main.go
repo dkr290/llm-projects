@@ -1,11 +1,13 @@
 package main
 
 import (
-	"flag"
 	"fmt"
+	"log"
 	"log/slog"
 	"pdf-extract-opensearch/pkg/collection"
 	"pdf-extract-opensearch/pkg/pdf"
+
+	"github.com/spf13/cobra"
 )
 
 var (
@@ -22,22 +24,35 @@ var (
 )
 
 func main() {
-	flag.BoolVar(&initVectors, "init", false, "init set to truth is to init the vectgor embedding")
-	flag.StringVar(&opensearch, "host", "", "opensearch host")
-	flag.StringVar(&vectorIndex, "index", "vector_store", "the vector store index")
-	// flag.StringVar(&username, "user", "", "the username")
-	// flag.StringVar(&password, "pass", "", "password for opensearch")
+	rootCmd := &cobra.Command{
+		Use:   "mycli",
+		Short: "A CLI tool with OpenSearch and vector embeddings",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			if opensearch == "" {
+				return fmt.Errorf("error: --host is required")
+			}
+			if username == "" {
+				return fmt.Errorf("error: --user is required")
+			}
+			if password == "" {
+				return fmt.Errorf("error: --pass is required")
+			}
+			fmt.Println("Running CLI tool...")
+			return nil
+		},
+	}
 
-	flag.Parse()
+	// Define flags
+	rootCmd.PersistentFlags().BoolVar(&initVectors, "init", false, "Initialize vector embeddings")
+	rootCmd.PersistentFlags().StringVar(&opensearch, "host", "", "OpenSearch host")
+	rootCmd.PersistentFlags().StringVar(&vectorIndex, "index", "vector_store", "Vector store index")
+	rootCmd.PersistentFlags().StringVar(&username, "user", "", "OpenSearch username")
+	rootCmd.PersistentFlags().StringVar(&password, "pass", "", "OpenSearch password")
 
-	fmt.Println(opensearch)
-	fmt.Println(initVectors)
-	fmt.Println(vectorIndex)
-
-	// if username == "" || password == "" || opensearch == "" {
-	// 	fmt.Println("Some parameters are empty")
-	// 	os.Exit(1)
-	// }
+	// Execute the root command
+	if err := rootCmd.Execute(); err != nil {
+		log.Fatal(err)
+	}
 	//	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Hour)
 	//	defer cancel()
 	if initVectors {

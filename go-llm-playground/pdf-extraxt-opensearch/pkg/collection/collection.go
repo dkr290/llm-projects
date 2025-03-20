@@ -13,10 +13,6 @@ import (
 
 func CreateIndex(index string, address string, username, password string) error {
 	// Create a client instance
-	fmt.Println(address)
-	fmt.Println(index)
-	fmt.Println(username)
-	fmt.Println(password)
 	cfg := opensearch.Config{
 		Addresses: []string{
 			address, // Replace with your OpenSearch URL
