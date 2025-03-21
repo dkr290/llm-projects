@@ -1,11 +1,13 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"log/slog"
 	"pdf-extract-opensearch/pkg/collection"
 	"pdf-extract-opensearch/pkg/pdf"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -14,9 +16,9 @@ var (
 	initVectors bool
 
 	// userQuery string
-	// chatModel   = "llama3.2"
-	// embedModel  = "nomic-embed-text"
-	// ollamaUrl   = "http://172.22.0.5/ollama"
+	chatModel   string
+	embedModel  string
+	ollamaUrl   string
 	opensearch  string
 	username    string
 	password    string
@@ -37,6 +39,9 @@ func main() {
 			if password == "" {
 				return fmt.Errorf("error: --pass is required")
 			}
+			if ollamaUrl == "" {
+				return fmt.Errorf("error: --ollamaurl is required")
+			}
 			fmt.Println("Running CLI tool...")
 			return nil
 		},
@@ -48,15 +53,29 @@ func main() {
 	rootCmd.PersistentFlags().StringVar(&vectorIndex, "index", "vector_store", "Vector store index")
 	rootCmd.PersistentFlags().StringVar(&username, "user", "", "OpenSearch username")
 	rootCmd.PersistentFlags().StringVar(&password, "pass", "", "OpenSearch password")
+	rootCmd.PersistentFlags().
+		StringVar(&chatModel, "chatmodel", "llama3.2", "the chat models to use")
+	rootCmd.PersistentFlags().
+		StringVar(&embedModel, "embedmodel", "nomic-embed-text", "the embedding model to use")
+	rootCmd.PersistentFlags().StringVar(&ollamaUrl, "ollamaurl", "", "the ollama url")
 
 	// Execute the root command
 	if err := rootCmd.Execute(); err != nil {
 		log.Fatal(err)
 	}
-	//	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Hour)
-	//	defer cancel()
+	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Hour)
+	defer cancel()
 	if initVectors {
 		embed_run()
+	}
+
+	models := []string{embedModel, chatModel}
+
+	for _, m := range models {
+		err := collection.EnsureModelExists(ctx, ollamaUrl, m)
+		if err != nil {
+			log.Fatal("error with downloading models", err)
+		}
 	}
 
 	// if userQuery != "" {
