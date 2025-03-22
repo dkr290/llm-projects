@@ -1,7 +1,9 @@
 package pdf
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
 	"os/exec"
 	"time"
@@ -11,7 +13,6 @@ import (
 	"github.com/tmc/langchaingo/llms/ollama"
 	"github.com/tmc/langchaingo/schema"
 	"github.com/tmc/langchaingo/textsplitter"
-	"github.com/tmc/langchaingo/vectorstores/opensearch"
 )
 
 // PDF is a struct that represents a PDF document.
@@ -101,17 +102,53 @@ func (p *PDF) GenEmbeddings(
 		return fmt.Errorf("new embedder error %v", err)
 	}
 
-	store, err := opensearch.New(opensearchClient,
-		opensearch.WithEmbedder(ollamaEmbeder),
-	)
+	err = manualEmbed(chunks, ollamaEmbeder, opensearchClient, IndexName)
 	if err != nil {
-		return fmt.Errorf("failed to create openearch emebedding store: %v", err)
+		return err
 	}
-	// Add documents to Qdrant
+	return nil
+}
 
-	_, err = store.AddDocuments(context.Background(), chunks)
-	if err != nil {
-		return fmt.Errorf("failed to add documents to Opensearch: %v", err)
+func manualEmbed(
+	chunks []schema.Document,
+	ollamaEmbeder *embeddings.EmbedderImpl,
+	opensearchClient *ops.Client, IndexName string,
+) error {
+	// Alternative: Manually index documents using the OpenSearch client
+	for i, chunk := range chunks {
+		// Generate embedding for the chunk
+		embedding, err := ollamaEmbeder.EmbedQuery(context.Background(), chunk.PageContent)
+		if err != nil {
+			return fmt.Errorf("failed to generate embedding for chunk %d: %v", i, err)
+		}
+
+		// Prepare the document for OpenSearch
+		doc := map[string]any{
+			"content":   chunk.PageContent,
+			"embedding": embedding,
+			// Add metadata or other fields as needed
+		}
+		// Step 1: Marshal the map to JSON
+		docJSON, err := json.Marshal(doc)
+		if err != nil {
+			return fmt.Errorf("failed to marshal document %d: %v", i, err)
+		}
+
+		// Step 2: Create an io.Reader from the JSON bytes
+		docReader := bytes.NewReader(docJSON)
+
+		// Index the document in OpenSearch
+		_, err = opensearchClient.Index(
+			IndexName,
+			docReader,
+			opensearchClient.Index.WithDocumentID(fmt.Sprintf("doc-%d", i)), // Optional: unique ID
+			opensearchClient.Index.WithRefresh(
+				"true",
+			), // Ensure immediate visibility
+		)
+		if err != nil {
+			return fmt.Errorf("failed to index document %d: %v", i, err)
+		}
 	}
 	return nil
 }

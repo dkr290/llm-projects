@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"strings"
 
 	"github.com/ollama/ollama/api"
 )
@@ -74,10 +75,18 @@ func EnsureModelExists(ctx context.Context, ollamaUrl string, model string) erro
 	}
 	client := api.NewClient(apiURL, &http.Client{})
 
-	_, err = generareText(ctx, client, "test prompt", model)
-	if err == nil {
-		// Model exists locally
-		return nil
+	models, err := client.List(ctx)
+	if err != nil {
+		return fmt.Errorf("failed to list models: %v", err)
+	}
+
+	localModel := []api.ListModelResponse{
+		{Model: model},
+	}
+	for _, m := range models.Models {
+		if strings.Contains(m.Model, localModel[0].Model) {
+			return nil
+		}
 	}
 
 	// If the error indicates that the model is missing, pull it
@@ -85,33 +94,4 @@ func EnsureModelExists(ctx context.Context, ollamaUrl string, model string) erro
 	log.Printf("Model %s not found locally. Pulling...\n", model)
 	return pullModel(ctx, client, model)
 	// Return other errors
-}
-
-func generareText(
-	ctx context.Context,
-	client *api.Client,
-	prompt string,
-	model string,
-) (string, error) {
-	req := &api.GenerateRequest{
-		// Model:  "deepseek-r1:1.5b",
-		Model:  model,
-		Prompt: prompt,
-
-		// set streaming to false
-		Stream: new(bool),
-	}
-	var generatedText string
-	respFunc := func(resp api.GenerateResponse) error {
-		// Only print the response here; GenerateResponse has a number of other
-		// interesting fields you want to examine.
-		generatedText = resp.Response
-		return nil
-	}
-	err := client.Generate(ctx, req, respFunc)
-	if err != nil {
-		return "", err
-	}
-
-	return generatedText, nil
 }

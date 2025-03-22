@@ -17,7 +17,7 @@ func CreateIndex(index string, client *opensearch.Client) error {
 		"settings": map[string]any{
 			"index": map[string]any{
 				"knn":                true, // Enable k-NN search
-				"number_of_shards":   3,    // Number of primary shards
+				"number_of_shards":   2,    // Number of primary shards
 				"number_of_replicas": 1,    // Number of replicas
 			},
 		},
@@ -37,6 +37,24 @@ func CreateIndex(index string, client *opensearch.Client) error {
 				},
 			},
 		},
+	}
+
+	existsIndex := opensearchapi.IndicesExistsRequest{
+		Index: []string{index},
+	}
+	existsRes, err := existsIndex.Do(context.Background(), client)
+	if err != nil {
+		return fmt.Errorf("error checking index existence: %s", err)
+	}
+	if existsRes.StatusCode == 200 {
+		fmt.Println("The index exists, deleting the index")
+		toDel := opensearchapi.IndicesDeleteRequest{
+			Index: []string{index},
+		}
+		_, err := toDel.Do(context.Background(), client)
+		if err != nil {
+			return fmt.Errorf("error deleting tghe index %v", err)
+		}
 	}
 
 	// Convert the settings to JSON

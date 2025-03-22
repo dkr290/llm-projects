@@ -82,11 +82,6 @@ func main() {
 		slog.Error("error creating the client: ", "error", err)
 		os.Exit(1)
 	}
-
-	if initVectors {
-		embed_run(client, embedModel)
-	}
-
 	models := []string{embedModel, chatModel}
 
 	for _, m := range models {
@@ -94,6 +89,10 @@ func main() {
 		if err != nil {
 			log.Fatal("error with downloading models", err)
 		}
+	}
+
+	if initVectors {
+		embed_run(client)
 	}
 
 	// if userQuery != "" {
@@ -105,7 +104,7 @@ func main() {
 	// }
 }
 
-func embed_run(client *opensearch.Client, embedmodel string) {
+func embed_run(client *opensearch.Client) {
 	// new PDF reading
 	p := pdf.New("./BOI.pdf")
 	if err := p.ReadPdf(); err != nil {
