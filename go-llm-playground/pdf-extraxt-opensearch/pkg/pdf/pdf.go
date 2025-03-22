@@ -3,16 +3,15 @@ package pdf
 import (
 	"context"
 	"fmt"
-	"log"
-	"net/url"
 	"os/exec"
 	"time"
 
+	ops "github.com/opensearch-project/opensearch-go"
 	"github.com/tmc/langchaingo/embeddings"
 	"github.com/tmc/langchaingo/llms/ollama"
 	"github.com/tmc/langchaingo/schema"
 	"github.com/tmc/langchaingo/textsplitter"
-	"github.com/tmc/langchaingo/vectorstores/qdrant"
+	"github.com/tmc/langchaingo/vectorstores/opensearch"
 )
 
 // PDF is a struct that represents a PDF document.
@@ -73,7 +72,7 @@ func (p *PDF) AddMetadata(chunks []string, docTitle string) ([]schema.Document, 
 		// Create a schema.Document for the current chunk
 		doc := schema.Document{
 			PageContent: c,
-			Metadata: map[string]interface{}{
+			Metadata: map[string]any{
 				"title":  md.title,
 				"author": md.author,
 				"date":   md.date,
@@ -88,7 +87,7 @@ func (p *PDF) AddMetadata(chunks []string, docTitle string) ([]schema.Document, 
 func (p *PDF) GenEmbeddings(
 	chunks []schema.Document,
 	modelName, ollamaUrl string,
-	qdrantUrl, collectionName string,
+	opensearchClient *ops.Client, IndexName string,
 ) error {
 	ollamaLLM, err := ollama.New(
 		ollama.WithModel(modelName),
@@ -102,25 +101,17 @@ func (p *PDF) GenEmbeddings(
 		return fmt.Errorf("new embedder error %v", err)
 	}
 
-	// Create a new Qdrant vector store.
-	url, err := url.Parse(qdrantUrl)
-	if err != nil {
-		log.Fatal(err)
-	}
-	// Create a Qdrant client
-	client, err := qdrant.New(
-		qdrant.WithURL(*url),
-		qdrant.WithCollectionName(collectionName),
-		qdrant.WithEmbedder(ollamaEmbeder),
+	store, err := opensearch.New(opensearchClient,
+		opensearch.WithEmbedder(ollamaEmbeder),
 	)
 	if err != nil {
-		return fmt.Errorf("failed to create Qdrant client: %v", err)
+		return fmt.Errorf("failed to create openearch emebedding store: %v", err)
 	}
 	// Add documents to Qdrant
 
-	_, err = client.AddDocuments(context.Background(), chunks)
+	_, err = store.AddDocuments(context.Background(), chunks)
 	if err != nil {
-		return fmt.Errorf("failed to add documents to Qdrant: %v", err)
+		return fmt.Errorf("failed to add documents to Opensearch: %v", err)
 	}
 	return nil
 }

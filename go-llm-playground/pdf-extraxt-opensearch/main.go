@@ -5,9 +5,12 @@ import (
 	"fmt"
 	"log"
 	"log/slog"
+	"os"
 	"pdf-extract-opensearch/pkg/collection"
 	"pdf-extract-opensearch/pkg/pdf"
 	"time"
+
+	"github.com/opensearch-project/opensearch-go"
 
 	"github.com/spf13/cobra"
 )
@@ -19,7 +22,7 @@ var (
 	chatModel   string
 	embedModel  string
 	ollamaUrl   string
-	opensearch  string
+	opsHost     string
 	username    string
 	password    string
 	vectorIndex string
@@ -30,7 +33,7 @@ func main() {
 		Use:   "mycli",
 		Short: "A CLI tool with OpenSearch and vector embeddings",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			if opensearch == "" {
+			if opsHost == "" {
 				return fmt.Errorf("error: --host is required")
 			}
 			if username == "" {
@@ -49,10 +52,10 @@ func main() {
 
 	// Define flags
 	rootCmd.PersistentFlags().BoolVar(&initVectors, "init", false, "Initialize vector embeddings")
-	rootCmd.PersistentFlags().StringVar(&opensearch, "host", "", "OpenSearch host")
+	rootCmd.PersistentFlags().StringVar(&opsHost, "opshost", "", "OpenSearch host")
 	rootCmd.PersistentFlags().StringVar(&vectorIndex, "index", "vector_store", "Vector store index")
-	rootCmd.PersistentFlags().StringVar(&username, "user", "", "OpenSearch username")
-	rootCmd.PersistentFlags().StringVar(&password, "pass", "", "OpenSearch password")
+	rootCmd.PersistentFlags().StringVar(&username, "opsuser", "", "OpenSearch username")
+	rootCmd.PersistentFlags().StringVar(&password, "opspass", "", "OpenSearch password")
 	rootCmd.PersistentFlags().
 		StringVar(&chatModel, "chatmodel", "llama3.2", "the chat models to use")
 	rootCmd.PersistentFlags().
@@ -65,8 +68,23 @@ func main() {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Hour)
 	defer cancel()
+	// Create a client instance
+	cfg := opensearch.Config{
+		Addresses: []string{
+			opsHost, // Replace with your OpenSearch URL
+
+		},
+		Username: username,
+		Password: password,
+	}
+	client, err := opensearch.NewClient(cfg)
+	if err != nil {
+		slog.Error("error creating the client: ", "error", err)
+		os.Exit(1)
+	}
+
 	if initVectors {
-		embed_run()
+		embed_run(client, embedModel)
 	}
 
 	models := []string{embedModel, chatModel}
@@ -87,7 +105,7 @@ func main() {
 	// }
 }
 
-func embed_run() {
+func embed_run(client *opensearch.Client, embedmodel string) {
 	// new PDF reading
 	p := pdf.New("./BOI.pdf")
 	if err := p.ReadPdf(); err != nil {
@@ -104,29 +122,22 @@ func embed_run() {
 	fmt.Println("Splitting the documents to chunks")
 
 	// add metadata to the chunks
-	// mdTextChunks, err := p.AddMetadata(docs, "BOI US FinCEN")
-	_, err = p.AddMetadata(docs, "BOI US FinCEN")
+	mdTextChunks, err := p.AddMetadata(docs, "BOI US FinCEN")
 	if err != nil {
 		slog.Error("error metadata ", "error", err)
 		return
 	}
+
 	fmt.Println("Adding metadata to the chunks")
-	err = collection.CreateIndex(vectorIndex, opensearch, username, password)
+	err = collection.CreateIndex(vectorIndex, client)
 	if err != nil {
 		slog.Error("error creating opensearhc index", "error", err)
 	}
-
-	// err = p.GenEmbeddings(
-	// 	mdTextChunks,
-	// 	"nomic-embed-text",
-	// 	"http://172.22.0.5/ollama",
-	// 	"http://qdrant.172.22.0.5.nip.io:6333",
-	// 	"vector_store1",
-	// )
-	// if err != nil {
-	// 	slog.Error("error adding the embeddings", "error", err)
-	// }
-	// fmt.Println("Finish with vector embedding")
+	err = p.GenEmbeddings(mdTextChunks, embedModel, ollamaUrl, client, vectorIndex)
+	if err != nil {
+		slog.Error("error adding the embeddings", "error", err)
+	}
+	fmt.Println("Finish with vector embedding")
 }
 
 // curl -X PUT "http://localhost:6333/collections/my_collection" \
