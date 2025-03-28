@@ -3,38 +3,36 @@ package response
 import (
 	"context"
 	"fmt"
-	"net/url"
 	"strings"
 
+	ops "github.com/opensearch-project/opensearch-go"
 	"github.com/tmc/langchaingo/chains"
 	"github.com/tmc/langchaingo/embeddings"
 	"github.com/tmc/langchaingo/llms/ollama"
 	"github.com/tmc/langchaingo/prompts"
-	"github.com/tmc/langchaingo/vectorstores/qdrant"
+	"github.com/tmc/langchaingo/vectorstores/opensearch"
 )
 
 type Questions struct {
-	ChatModel       string
-	CTX             context.Context
-	EmbedModel      string
-	OllamaUrl       string
-	OpensearchUrl   string
-	OpensearchIndex string
-	UserQuery       string
+	ChatModel        string
+	CTX              context.Context
+	EmbedModel       string
+	OllamaUrl        string
+	OpensearchClient *ops.Client
+	UserQuery        string
 }
 
 func New(
-	chatModel, embedModel, url, osurl, opensearchindex, userQuery string,
-	ctx context.Context,
+	chatModel, embedModel, url, userQuery string,
+	ctx context.Context, o *ops.Client,
 ) *Questions {
 	return &Questions{
-		ChatModel:       chatModel,
-		EmbedModel:      embedModel,
-		OllamaUrl:       url,
-		OpensearchUrl:   osurl,
-		OpensearchIndex: opensearchindex,
-		UserQuery:       userQuery,
-		CTX:             ctx,
+		ChatModel:        chatModel,
+		EmbedModel:       embedModel,
+		OllamaUrl:        url,
+		OpensearchClient: o,
+		UserQuery:        userQuery,
+		CTX:              ctx,
 	}
 }
 
@@ -61,30 +59,20 @@ func (q Questions) QuestionResponse() error {
 		return fmt.Errorf("new embedder error %v", err)
 	}
 
-	embedding, err := ollamaEmbeder.Embed(q.CTX, doc.Content) // Generate embedding
+	store, err := opensearch.New(q.OpensearchClient, opensearch.WithEmbedder(ollamaEmbeder))
 	if err != nil {
-		return fmt.Errorf("embedding error: %v", err)
-	}
-
-	// Create a new Qdrant vector store.
-	url, err := url.Parse(q.QdrantUrl)
-	if err != nil {
-		return fmt.Errorf("error qdrant parse url %v", err)
-	}
-	store, err := qdrant.New(
-		qdrant.WithURL(*url),
-		qdrant.WithCollectionName(q.QdrantCollection),
-		qdrant.WithEmbedder(ollamaEmbeder),
-	)
-	if err != nil {
-		return fmt.Errorf("error initializing Qdrant store %v", err)
+		return fmt.Errorf("error initializing Opensearch store %v", err)
 	}
 
 	// Example user query
 	//	userQuery := "by when should I file if my business was established in 2013?"
 
 	// Retrieve documents from Qdrant using a single query
-	docs, err := store.SimilaritySearch(q.CTX, q.UserQuery, 5) // Retrieve top 3 results
+	docs, err := store.SimilaritySearch(
+		q.CTX,
+		q.UserQuery,
+		5,
+	) // Retrieve top 5 results
 	if err != nil {
 		return fmt.Errorf("error retrieving documents %v", err)
 	}
