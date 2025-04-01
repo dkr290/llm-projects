@@ -19,31 +19,29 @@ type Questions struct {
 	EmbedModel       string
 	OllamaUrl        string
 	OpensearchClient *ops.Client
-	UserQuery        string
 }
 
 func New(
-	chatModel, embedModel, url, userQuery string,
+	chatModel, embedModel, ollamaUrl string,
 	ctx context.Context, o *ops.Client,
 ) *Questions {
 	return &Questions{
 		ChatModel:        chatModel,
 		EmbedModel:       embedModel,
-		OllamaUrl:        url,
+		OllamaUrl:        ollamaUrl,
 		OpensearchClient: o,
-		UserQuery:        userQuery,
 		CTX:              ctx,
 	}
 }
 
-func (q Questions) QuestionResponse() error {
+func (q Questions) QuestionResponse(UserQuery string) (map[string]any, error) {
 	// Load chat model (Ollama 3.2)
 	chatModel, err := ollama.New(
 		ollama.WithModel(q.ChatModel), // Change to your chat model
 		ollama.WithServerURL(q.OllamaUrl),
 	)
 	if err != nil {
-		return fmt.Errorf("error loading chat model: %v", err)
+		return nil, fmt.Errorf("error loading chat model: %v", err)
 	}
 
 	// Load embedding model (nomic-embed-text)
@@ -52,16 +50,16 @@ func (q Questions) QuestionResponse() error {
 		ollama.WithServerURL(q.OllamaUrl),
 	)
 	if err != nil {
-		return fmt.Errorf("error loading embedding model: %v", err)
+		return nil, fmt.Errorf("error loading embedding model: %v", err)
 	}
 	ollamaEmbeder, err := embeddings.NewEmbedder(embedModel)
 	if err != nil {
-		return fmt.Errorf("new embedder error %v", err)
+		return nil, fmt.Errorf("new embedder error %v", err)
 	}
 
 	store, err := opensearch.New(q.OpensearchClient, opensearch.WithEmbedder(ollamaEmbeder))
 	if err != nil {
-		return fmt.Errorf("error initializing Opensearch store %v", err)
+		return nil, fmt.Errorf("error initializing Opensearch store %v", err)
 	}
 
 	// Example user query
@@ -70,12 +68,13 @@ func (q Questions) QuestionResponse() error {
 	// Retrieve documents from Qdrant using a single query
 	docs, err := store.SimilaritySearch(
 		q.CTX,
-		q.UserQuery,
+		UserQuery,
 		5,
 	) // Retrieve top 5 results
 	if err != nil {
-		return fmt.Errorf("error retrieving documents %v", err)
+		return nil, fmt.Errorf("error retrieving documents %v", err)
 	}
+	fmt.Println(docs)
 
 	// Combine retrieved documents as context
 	var retrievedDocs []string
@@ -96,9 +95,10 @@ func (q Questions) QuestionResponse() error {
 	// Generate final response using chat model
 	finalChain := chains.NewLLMChain(chatModel, chatPrompt)
 
+	fmt.Println(finalChain)
 	answer, err := finalChain.Call(q.CTX, map[string]any{
 		"context":  contextText,
-		"question": q.UserQuery,
+		"question": UserQuery,
 	}, chains.WithMaxTokens(500), chains.WithMaxLength(10000))
 	// chains.WithStreamingFunc(func(ctx context.Context, chunk []byte) error {
 	// 	if ctx.Err() != nil || len(chunk) == 0 {
@@ -108,11 +108,9 @@ func (q Questions) QuestionResponse() error {
 	// 	return nil
 	// }))
 	if err != nil {
-		return fmt.Errorf("Error generating answer: %v", err)
+		return nil, fmt.Errorf("Error generating answer: %v", err)
 	}
-	fmt.Println("")
+	fmt.Println(answer)
 	// Print AI-generated answer
-	fmt.Println("AI Response:\n", answer["text"])
-
-	return nil
+	return answer, nil
 }

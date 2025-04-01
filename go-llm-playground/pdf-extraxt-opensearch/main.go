@@ -6,10 +6,13 @@ import (
 	"log"
 	"log/slog"
 	"os"
+	"pdf-extract-opensearch/handlers"
 	"pdf-extract-opensearch/pkg/collection"
 	"pdf-extract-opensearch/pkg/pdf"
+	"pdf-extract-opensearch/pkg/response"
 	"time"
 
+	"github.com/gofiber/fiber/v2"
 	"github.com/opensearch-project/opensearch-go"
 
 	"github.com/spf13/cobra"
@@ -26,6 +29,7 @@ var (
 	username    string
 	password    string
 	vectorIndex string
+	port        string
 )
 
 func main() {
@@ -95,6 +99,15 @@ func main() {
 		embed_run(client)
 	}
 
+	getEnvs()
+	fiberClient := fiber.New()
+	modelConfig := response.New(chatModel, embedModel, ollamaUrl, ctx, client)
+	h := handlers.NewHandlers(*modelConfig)
+	fiberClient.Post("/generate", h.GenerateText)
+	if err := fiberClient.Listen(port); err != nil {
+		log.Fatal(err)
+	}
+
 	// if userQuery != "" {
 	// 	r := response.New(chatModel, embedModel, ollamaUrl, qUrl, vectorCollection, userQuery, ctx)
 	// 	if err := r.QuestionResponse(); err != nil {
@@ -137,6 +150,13 @@ func embed_run(client *opensearch.Client) {
 		slog.Error("error adding the embeddings", "error", err)
 	}
 	fmt.Println("Finish with vector embedding")
+}
+
+func getEnvs() {
+	port = os.Getenv("PORT")
+	if len(port) == 0 {
+		port = ":3000"
+	}
 }
 
 // curl -X PUT "http://localhost:6333/collections/my_collection" \
