@@ -107,14 +107,6 @@ func main() {
 	if err := fiberClient.Listen(port); err != nil {
 		log.Fatal(err)
 	}
-
-	// if userQuery != "" {
-	// 	r := response.New(chatModel, embedModel, ollamaUrl, qUrl, vectorCollection, userQuery, ctx)
-	// 	if err := r.QuestionResponse(); err != nil {
-	// 		slog.Error("unexpected error of question responce", "error", err)
-	// 	}
-	//
-	// }
 }
 
 func embed_run(client *opensearch.Client) {
@@ -158,14 +150,3 @@ func getEnvs() {
 		port = ":3000"
 	}
 }
-
-// curl -X PUT "http://localhost:6333/collections/my_collection" \
-//      -H "Content-Type: application/json" \
-//      -d '{
-//            "vectors": {
-//                "size": 128,
-//                "distance": "Cosine"
-//            },
-//            "shard_number": 6,
-//            "replication_factor": 3
-//          }'

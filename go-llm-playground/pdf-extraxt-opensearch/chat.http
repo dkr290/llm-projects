@@ -3,5 +3,5 @@ accept: application/json
 content-type: application/json
 
 {
-    "prompt": "What is a about the document and what is for ?"
+    "prompt": "Summarize the key points of the document"
 }

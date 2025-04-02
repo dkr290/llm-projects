@@ -37,20 +37,24 @@ func (h *Handlers) GenerateText(c *fiber.Ctx) error {
 	var err error
 
 	if resp, err = h.ResponceConfig.QuestionResponseNew(req.Prompt); err != nil {
-		fmt.Println(resp["text"])
 		return c.Status(fiber.StatusInternalServerError).
 			JSON(fiber.Map{"error": "Cannot generate response: " + err.Error()})
 	}
-	responseText, ok := resp["text"].(string)
-	fmt.Println(resp["text"])
-
+	// Safely extract answer with type assertion
+	answerValue, exists := resp["answer"]
+	if !exists {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error": "Response missing 'answer' field",
+		})
+	}
+	answer, ok := answerValue.(map[string]any)
 	if !ok {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error": "Invalid response format from AI",
+			"error": fmt.Sprintf("Invalid answer format, expected string got %T", answerValue),
 		})
 	}
 
 	return c.JSON(fiber.Map{
-		"AI Responce:": responseText,
+		"AI Responce:": answer["text"],
 	})
 }
