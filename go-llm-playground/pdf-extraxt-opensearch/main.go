@@ -101,7 +101,7 @@ func main() {
 
 	getEnvs()
 	fiberClient := fiber.New()
-	modelConfig := response.New(chatModel, embedModel, ollamaUrl, ctx, client)
+	modelConfig := response.New(chatModel, embedModel, ollamaUrl, ctx, client, vectorIndex)
 	h := handlers.NewHandlers(*modelConfig)
 	fiberClient.Post("/generate", h.GenerateText)
 	if err := fiberClient.Listen(port); err != nil {

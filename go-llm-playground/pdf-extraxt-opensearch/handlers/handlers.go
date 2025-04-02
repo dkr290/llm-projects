@@ -36,7 +36,7 @@ func (h *Handlers) GenerateText(c *fiber.Ctx) error {
 	var resp map[string]any
 	var err error
 
-	if resp, err = h.ResponceConfig.QuestionResponse(req.Prompt); err != nil {
+	if resp, err = h.ResponceConfig.QuestionResponseNew(req.Prompt); err != nil {
 		fmt.Println(resp["text"])
 		return c.Status(fiber.StatusInternalServerError).
 			JSON(fiber.Map{"error": "Cannot generate response: " + err.Error()})
