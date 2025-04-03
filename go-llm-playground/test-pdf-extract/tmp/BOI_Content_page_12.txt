@@ -1,0 +1,1415 @@
+/Artifact <</O /Layout >>BDC 
+BT
+0 0 0 0.5 k
+/GS0 gs
+/C2_0 1 Tf
+11 0 0 11 131.3132 61.4413 Tm
+<002D00500059005002AD004E0054004C00570001003A006200590050005D005E00530054005B0001003400590051005A005D0058004C005F0054005A00590001003D0050005B005A005D005F0054005900520001003100540057005400590052000100340059005E005F005D0060004E005F0054005A0059005E>Tj
+ET
+EMC 
+/Artifact <</O /Layout >>BDC 
+BT
+11 0 0 11 480.6868 61.4413 Tm
+<0001>Tj
+ET
+EMC 
+/Artifact <</O /Layout >>BDC 
+BT
+11 0 0 11 232.4214 44.4413 Tm
+<0035004C00590060004C005D0064>Tj
+ET
+EMC 
+/Artifact <</O /Layout >>BDC 
+BT
+11 0 0 11 274.3105 44.4413 Tm
+<0001001D001B001D001F00010018000100410050005D005E0054005A00590001001C0019001B>Tj
+ET
+EMC 
+/Artifact <</O /Layout >>BDC 
+BT
+/CS0 cs 1  scn
+11 0 0 11 300.3845 22.2413 Tm
+<001C001D>Tj
+ET
+EMC 
+q
+0 g
+0 TL/Fm0 Do
+Q
+0 0 0 RG
+q 1 0 0 1 72 610.4 cm
+0 0 m
+277.845 0 l
+S
+Q
+q 1 0 0 1 72 508.7999 cm
+0 0 m
+199.33 0 l
+S
+Q
+q 1 0 0 1 72 299.1999 cm
+0 0 m
+233.289 0 l
+S
+Q
+q 1 0 0 1 72 149.5999 cm
+0 0 m
+251.025 0 l
+S
+Q
+/P <</Lang (en-US)/MCID 379 >>BDC 
+BT
+0 0 0 rg
+/T1_0 1 Tf
+12 0 0 12 72 728.9999 Tm
+[(\022\025\001\022\204\022\001\006)20 (\030)2 (\020)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\026)2 (\240)12 (\026\r)10 (\021)2 (\022\f\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+7.404 0 Td
+(\035)Tj
+EMC 
+[(\f\006\215\f)20 (\027)22 (\030\025\027\022\030)2 (\020)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\021)17 (\032\025\027\r)10.1 (\032\020)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\032\204)1 (\026\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+9.691 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\026\025\027\022\027\255)20 (\031)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+4.222 0 Td
+(\035)Tj
+EMC 
+(\026\025\027\022\027\255)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+2.498 0 Td
+(\035)Tj
+EMC 
+[(\f)4 (\033\030)2 (\020\020)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\r)10 (\026\013)1 (\032\r\027)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+4.787 0 Td
+(\035)Tj
+EMC 
+[(\022\025\024)10 (\032\r\n\030)10.9 (\027\022\032\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+4.964 0 Td
+(\035)Tj
+EMC 
+[(\016\022\027)2 (\033)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.95 0 Td
+(\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 380 >>BDC 
+BT
+12 0 0 12 72 712.9999 Tm
+[(\r)10 (\026\f\013)1 (\026\021)10 (\027)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.97 0 Td
+(\035)Tj
+EMC 
+[(\027)11 (\032)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.555 0 Td
+(\035)Tj
+EMC 
+[(\022\025\001\022\204\022\001\006)20 (\030)2 (\020)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\016)6 (\033\032)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+(\033\030\f)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+7.738 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\b\r)10 (\026)15 (\030)11 (\027)11 (\026\f)20 (\027)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.421 0 Td
+(\035)Tj
+EMC 
+[(\030\006\027)2 (\033\032\r)8 (\022\027\255)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.873 0 Td
+(\035)Tj
+EMC 
+[(\032\204)1 (\026\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.96 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\f)20 (\027\r)21 (\030)11 (\027)11 (\026)10 (\b)-2 (\022\021)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.612 0 Td
+(\035)Tj
+EMC 
+[(\n\030\025\030\b)11 (\026\n\026\025\027)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+5.622 0 Td
+(\035)Tj
+EMC 
+(\032\024)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.992 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 381 >>BDC 
+BT
+12 0 0 12 72 696.9999 Tm
+[(\026\025\027\022\027\255)20 (\036)]TJ
+/Span<</ActualText<FEFF00200020>>> BDC 
+(\035\035)Tj
+EMC 
+(\235\033\026)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+4.436 0 Td
+(\035)Tj
+EMC 
+[(\r)10 (\026\013)1 (\032\r\027)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.695 0 Td
+(\035)Tj
+EMC 
+[(\f)4 (\033\032\006\020\001)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.972 0 Td
+(\035)Tj
+EMC 
+(\025\032\027)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.577 0 Td
+(\035)Tj
+EMC 
+[(\022\025\021)2 (\020\006)1 (\001\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.198 0 Td
+(\035)Tj
+EMC 
+(\030\025\255)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.653 0 Td
+(\035)Tj
+EMC 
+[(\022\025\024)10 (\032\r\n\030)10.9 (\027\022\032\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+4.964 0 Td
+(\035)Tj
+EMC 
+[(\030)2 (\215)1 (\032\006\027)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.604 0 Td
+(\035)Tj
+EMC 
+[(\021)17 (\032\n\013)20 (\030\025\255)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.956 0 Td
+(\035)Tj
+EMC 
+[(\030\013\013\020\022\021)10 (\030\025\027)10.1 (\f\036)]TJ
+/Span<</ActualText<FEFF00200020>>> BDC 
+(\035\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 382 >>BDC 
+BT
+/T1_1 1 Tf
+12 0 0 12 72 671.9999 Tm
+[(\204\205\002\017\032\002\025)16 (\033\r)12.1 (\032\240\206\032)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 383 >>BDC 
+BT
+/T1_0 1 Tf
+12 0 0 12 72 652.4 Tm
+[(\201)15 (\006\020\020)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\020\026)10 (\b)15 (\030)2 (\020)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+(\025\030\n\026)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+6.089 0 Td
+(\035)Tj
+EMC 
+(\030\025\001)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.765 0 Td
+(\035)Tj
+EMC 
+[(\030)2 (\020\027)11 (\026\r\025\030)11 (\027)11 (\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.821 0 Td
+(\035)Tj
+EMC 
+[(\025\030\n\026)2 (\211\f\212\233)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 384 >>BDC 
+BT
+12 0 0 12 72 631.9 Tm
+(\004\036\035)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 385 >>BDC 
+BT
+0.15 1 1 0 k
+/T1_2 1 Tf
+12 0 0 12 89 631.9 Tm
+(\037)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 386 >>BDC 
+BT
+0 0 0 rg
+/T1_0 1 Tf
+/Span<</ActualText<FEFF0020>>> BDC 
+12 0 0 12 94.4838 631.9 Tm
+(\035)Tj
+EMC 
+[(\t)10 (\026\013)1 (\032\r\027\022\025\b)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+4.174 0 Td
+(\035)Tj
+EMC 
+[(\021)17 (\032\n\013)20 (\030\025\255)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.956 0 Td
+(\035)Tj
+EMC 
+[(\020\026)10 (\b)15 (\030)2 (\020)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+(\025\030\n\026)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 387 >>BDC 
+BT
+/T1_3 1 Tf
+12 0 0 12 72 611.4 Tm
+[(\b\026\007)20 (\033\035\t)4 (\024)10 (\033\027\036\026\007)15 (\034\016)10 (\036\035)29 (\034\b\033)14 (\031\023)7 (\034\200\034\005)7 (\034)10 (\031\030)4 (\036\035\033\027\026\025)-7 (\034\024)21 (\036\023\030)20 (\022\026\021)22 (\034\r\031)10 (\025)16 (\022)7 (\r\034\026\022\023\031\020)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 388 >>BDC 
+BT
+/T1_0 1 Tf
+12 0 0 12 72 590.8999 Tm
+[(\202\025\027)11 (\026\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.14 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\r)10 (\026\013)1 (\032\r\027\022\025\b)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.947 0 Td
+(\035)Tj
+EMC 
+[(\021)17 (\032\n\013)20 (\030\025\255\214)57 (\f)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+4.525 0 Td
+(\035)Tj
+EMC 
+(\024\006\020\020)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\020\026)10 (\b)15 (\030)2 (\020)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+(\025\030\n\026)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+6.09 0 Td
+(\035)Tj
+EMC 
+(\030\f)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.092 0 Td
+(\035)Tj
+EMC 
+[(\r)10 (\026\021)17 (\032\r)9.9 (\001\026\001)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.833 0 Td
+(\035)Tj
+EMC 
+(\032\025)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.265 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\030\r\027\022\021)2 (\020\026\f)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.117 0 Td
+(\035)Tj
+EMC 
+(\032\024)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.992 0 Td
+(\035)Tj
+EMC 
+[(\022\025\021)17 (\032\r\013)1 (\032\r)21 (\030)11 (\027\022\032\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+5.705 0 Td
+(\035)Tj
+EMC 
+(\032\r)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.044 0 Td
+(\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 389 >>BDC 
+BT
+12 0 0 12 72 574.8999 Tm
+[(\032\027)2 (\033\026\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.165 0 Td
+(\035)Tj
+EMC 
+[(\001\032)1 (\021\006\n\026\025\027)9.9 (\f)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+4.786 0 Td
+(\035)Tj
+EMC 
+[(\021\r)10 (\026)15 (\030)11 (\027\022\025\b)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.466 0 Td
+(\035)Tj
+EMC 
+(\032\r)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.044 0 Td
+(\035)Tj
+EMC 
+[(\r)10 (\026)10 (\b)-2 (\022\f)20 (\027)11 (\026\r)8 (\022\025\b)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+4.426 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\026\025\027\022\027\255)20 (\036)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 390 >>BDC 
+BT
+/T1_1 1 Tf
+12 0 0 12 72 549.8999 Tm
+[(\204\205\002\017\032\002\025)16 (\033\r)12.1 (\032\200\206)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 391 >>BDC 
+BT
+/T1_0 1 Tf
+12 0 0 12 72 530.2999 Tm
+(\002\036\035)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 392 >>BDC 
+BT
+12 0 0 12 89 530.2999 Tm
+[(\206)1 (\020\027)11 (\026\r\025\030)11 (\027)11 (\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.657 0 Td
+(\035)Tj
+EMC 
+(\025\030\n\026)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+2.516 0 Td
+(\035)Tj
+EMC 
+(\211\026\036\b\036\031)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\027\r)21.1 (\030\001\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+4.43 0 Td
+(\035)Tj
+EMC 
+(\025\030\n\026\031)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+(\213\023\206\212)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 393 >>BDC 
+BT
+/T1_3 1 Tf
+12 0 0 12 72 509.7999 Tm
+[(\b\026\007)20 (\033\035\t)4 (\024)10 (\033\027\036\026\007)15 (\034\016)10 (\036\035)29 (\034\b\033)14 (\031\023)7 (\034\202\034\005)7 (\034\203)4 (\r\033)14 (\031\035\026\022)14 (\033)14 (\031)7 (\034\026\022\023\031\020)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 394 >>BDC 
+BT
+/T1_0 1 Tf
+12 0 0 12 72 489.2999 Tm
+[(\202\025\027)11 (\026\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.14 0 Td
+(\035)Tj
+EMC 
+(\030\025\255)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.653 0 Td
+(\035)Tj
+EMC 
+(\032\024)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.992 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\r)10 (\026\013)1 (\032\r\027\022\025\b)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.947 0 Td
+(\035)Tj
+EMC 
+[(\021)17 (\032\n\013)20 (\030\025\255\214)57 (\f)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+4.525 0 Td
+(\035)Tj
+EMC 
+[(\027\r)21 (\030\001\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.324 0 Td
+(\035)Tj
+EMC 
+(\025\030\n\026\f\031)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\222)38.1 (\001\032\022\025\b)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+5.993 0 Td
+(\035)Tj
+EMC 
+(\215\006\f\022\025\026\f\f)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+3.726 0 Td
+(\035)Tj
+EMC 
+[(\030\f)3 (\223)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.455 0 Td
+(\035)Tj
+EMC 
+(\032\r)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.044 0 Td
+(\035)Tj
+EMC 
+(\213\023\206)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.907 0 Td
+(\035)Tj
+EMC 
+(\025\030\n\026\f\031)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+(\032\r)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+4.186 0 Td
+(\035)Tj
+EMC 
+[(\222)2 (\027\r)21 (\030\001\022\025\b)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.451 0 Td
+(\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 395 >>BDC 
+BT
+12 0 0 12 72 473.2999 Tm
+[(\030\f)3 (\223)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.255 0 Td
+(\035)Tj
+EMC 
+(\032\r)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.044 0 Td
+(\035)Tj
+EMC 
+[(\235)101 (\205)40 (\206)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.465 0 Td
+(\035)Tj
+EMC 
+(\025\030\n\026\f\036)Tj
+/Span<</ActualText<FEFF00200020>>> BDC 
+(\035\035)Tj
+EMC 
+(\037\024)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+4.039 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\r)10 (\026\013)1 (\032\r\027\022\025\b)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.947 0 Td
+(\035)Tj
+EMC 
+[(\021)17 (\032\n\013)20 (\030\025\255)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.956 0 Td
+(\035)Tj
+EMC 
+(\033\030\f)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.62 0 Td
+(\035)Tj
+EMC 
+(\n\006\020\027\022\013\020\026)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+3.581 0 Td
+(\035)Tj
+EMC 
+[(\030)2 (\020\027)11 (\026\r\025\030)11 (\027)11 (\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.821 0 Td
+(\035)Tj
+EMC 
+(\025\030\n\026\f\031)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+(\006\f\026)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+4.757 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\222)2 (\256\223)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.399 0 Td
+(\035)Tj
+EMC 
+(\032\r)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.044 0 Td
+(\035)Tj
+EMC 
+[(\222)2 (\232\222)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.215 0 Td
+(\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 396 >>BDC 
+BT
+12 0 0 12 72 457.2999 Tm
+[(\215\006\027)20 (\027)11 (\032\025\f)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.132 0 Td
+(\035)Tj
+EMC 
+(\022\025)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.959 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+(\023\017\037\t)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\027)11 (\032)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+(\030\001\001)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+5.027 0 Td
+(\035)Tj
+EMC 
+[(\030\001\001\022\027\022\032\025\030)2 (\020)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\030)2 (\020\027)11 (\026\r\025\030)11 (\027)11 (\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+8.163 0 Td
+(\035)Tj
+EMC 
+(\025\030\n\026)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+2.516 0 Td
+(\035)Tj
+EMC 
+[(\024)6 (\022\026)2 (\020\001\f)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.349 0 Td
+(\035)Tj
+EMC 
+(\211\032\025\026)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+2.027 0 Td
+(\035)Tj
+EMC 
+[(\024)6 (\022\026)2 (\020\001)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.946 0 Td
+(\035)Tj
+EMC 
+[(\024)10 (\032\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.297 0 Td
+(\035)Tj
+EMC 
+[(\026)15 (\030\021)2 (\033)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.132 0 Td
+(\035)Tj
+EMC 
+[(\030)2 (\020\027)11 (\026\r\025\030)11 (\027)11 (\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.821 0 Td
+(\035)Tj
+EMC 
+(\025\030\n\026\212\036)Tj
+/Span<</ActualText<FEFF00200020>>> BDC 
+(\035\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 397 >>BDC 
+BT
+12 0 0 12 72 441.2999 Tm
+(\213\032)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+(\025\032\027)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+2.716 0 Td
+(\035)Tj
+EMC 
+[(\022\025\021)2 (\020\006)1 (\001\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.198 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\030\021\r)10 (\032\025\255\n\f)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+4.163 0 Td
+(\035)Tj
+EMC 
+(\213\023\206)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.907 0 Td
+(\035)Tj
+EMC 
+(\032\r)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.044 0 Td
+(\035)Tj
+EMC 
+[(\206)1 (\251)10 (\206)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.798 0 Td
+(\035)Tj
+EMC 
+[(\016\022\027)2 (\033)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.95 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\030)2 (\020\027)11 (\026\r\025\030)11 (\027)11 (\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.821 0 Td
+(\035)Tj
+EMC 
+(\025\030\n\026\036)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 398 >>BDC 
+BT
+/T1_1 1 Tf
+12 0 0 12 72 416.2999 Tm
+[(\204\205\002\017\032\002\025)16 (\033\r)12.1 (\032\207\206)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 399 >>BDC 
+BT
+/T1_0 1 Tf
+12 0 0 12 72 396.6999 Tm
+[(\201)11 (\032\r\n)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.128 0 Td
+(\035)Tj
+EMC 
+(\032\024)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.992 0 Td
+(\035)Tj
+EMC 
+[(\022\001\026\025\027\022\024)6.1 (\022\021)10 (\030)11 (\027\022\032\025\233)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 400 >>BDC 
+BT
+12 0 0 12 72 376.1999 Tm
+(\252\036\035)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 401 >>BDC 
+BT
+0.15 1 1 0 k
+/T1_2 1 Tf
+12 0 0 12 89 376.1999 Tm
+(\037)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 402 >>BDC 
+BT
+0 0 0 rg
+/T1_0 1 Tf
+/Span<</ActualText<FEFF0020>>> BDC 
+12 0 0 12 94.4838 376.1999 Tm
+(\035)Tj
+EMC 
+[(\235)78 (\030\240)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.546 0 Td
+(\035)Tj
+EMC 
+[(\022\001\026\025\027\022\024)6.1 (\022\021)10 (\030)11 (\027\022\032\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+5.54 0 Td
+(\035)Tj
+EMC 
+[(\027\255\013)1 (\026)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 403 >>BDC 
+BT
+/T1_4 1 Tf
+12 0 0 12 203.2021 376.1999 Tm
+[(\037\036\035\034\033\034\032\031\037\030\027\034\037\f)9 (\013)10 (\030\n\037\033\t\035\031\r)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 404 >>BDC 
+BT
+/T1_0 1 Tf
+12 0 0 12 102 357.6999 Tm
+(\254\035)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 405 >>BDC 
+BT
+12 0 0 12 120 357.6999 Tm
+(\202\037\203)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 406 >>BDC 
+BT
+12 0 0 12 102 339.1999 Tm
+(\254\035)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 407 >>BDC 
+BT
+12 0 0 12 120 339.1999 Tm
+[()11 (\203\205\037\235\037\203)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 408 >>BDC 
+BT
+12 0 0 12 102 320.6999 Tm
+(\254\035)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 409 >>BDC 
+BT
+12 0 0 12 120 320.6999 Tm
+[(\201)11 (\032\r)10 (\026)2 (\022\b\025)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 410 >>BDC 
+BT
+/T1_3 1 Tf
+12 0 0 12 72 300.1999 Tm
+[(\b\026\007)20 (\033\035\t)4 (\024)10 (\033\027\036\026\007)15 (\034\016)10 (\036\035)29 (\034\b\033)14 (\031\023)7 (\034\204\034\005)7 (\034\004)73 (\022\205)-7 (\034\027\013\031\026\033\027\016)22 (\027\024)10 (\022)14 (\033\027\036\026)7 (\034\033\021\030)4 (\031\020)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 411 >>BDC 
+BT
+/T1_0 1 Tf
+12 0 0 12 72 279.6999 Tm
+[(\026)2 (\020\026\021)10 (\027)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.471 0 Td
+(\035)Tj
+EMC 
+[(\222)2 (\202\037\203\223)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.311 0 Td
+(\035)Tj
+EMC 
+(\022\024)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.686 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\r)10 (\026\013)1 (\032\r\027\022\025\b)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.947 0 Td
+(\035)Tj
+EMC 
+[(\021)17 (\032\n\013)20 (\030\025\255)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.956 0 Td
+(\035)Tj
+EMC 
+(\033\030\f)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.62 0 Td
+(\035)Tj
+EMC 
+(\030)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.689 0 Td
+(\035)Tj
+EMC 
+[(\207)10 (\036\036)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\202\n\013\020\032\255)1 (\026\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+5.853 0 Td
+(\035)Tj
+EMC 
+[(\037\001\026\025\027\022\024)6 (\022\021)10 (\030)11 (\027\022\032\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+5.551 0 Td
+(\035)Tj
+EMC 
+[(\203\006\n)2 (\215)1 (\026\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.508 0 Td
+(\035)Tj
+EMC 
+(\211\202\037\203\212\036)Tj
+/Span<</ActualText<FEFF00200020>>> BDC 
+(\035\035)Tj
+EMC 
+[(\026)2 (\020\026\021)10 (\027)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+5.239 0 Td
+(\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 412 >>BDC 
+BT
+12 0 0 12 72 263.6999 Tm
+[(\222)11 ()11 (\203\232)2 (\037\235\037\203\223)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+4.315 0 Td
+(\035)Tj
+EMC 
+(\022\024)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.686 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\r)10 (\026\013)1 (\032\r\027\022\025\b)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.947 0 Td
+(\035)Tj
+EMC 
+[(\021)17 (\032\n\013)20 (\030\025\255)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.956 0 Td
+(\035)Tj
+EMC 
+[(\006\027\022)2 (\020\022\236)10 (\026\f)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.012 0 Td
+(\035)Tj
+EMC 
+(\030)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.689 0 Td
+(\035)Tj
+EMC 
+[(\207)10 (\036\036)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\032)1 (\021)2.1 (\022\030)2 (\020)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\026\021\006\r)8 (\022\027\255)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+7.902 0 Td
+(\035)Tj
+EMC 
+[(\203\006\n)2 (\215)1 (\026\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.508 0 Td
+(\035)Tj
+EMC 
+[(\211)11 (\203\212)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+(\032\r)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+3.469 0 Td
+(\035)Tj
+EMC 
+[(\037\025\001\022\204\022\001\006)20 (\030)2 (\020)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 413 >>BDC 
+BT
+12 0 0 12 72 247.6999 Tm
+[(\235)78 (\030\240\013)20 (\030\255)1 (\026\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.586 0 Td
+(\035)Tj
+EMC 
+[(\037\001\026\025\027\022\024)6.1 (\022\021)10 (\030)11 (\027\022\032\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+5.551 0 Td
+(\035)Tj
+EMC 
+[(\203\006\n)2 (\215)1 (\026\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.508 0 Td
+(\035)Tj
+EMC 
+(\211\037\235\037\203\212)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+(\030\f)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+3.49 0 Td
+(\035)Tj
+EMC 
+(\030)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.689 0 Td
+(\035)Tj
+EMC 
+[(\027)22 (\030\240)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.39 0 Td
+(\035)Tj
+EMC 
+[(\022\001\026\025\027\022\024)6 (\022\021)10 (\030)11 (\027\022\032\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+5.54 0 Td
+(\035)Tj
+EMC 
+[(\025\006\n)2 (\215)1 (\026\r)39 (\036)]TJ
+/Span<</ActualText<FEFF00200020>>> BDC 
+(\035\035)Tj
+EMC 
+[(\026)2.1 (\020\026\021)10 (\027)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+6.463 0 Td
+(\035)Tj
+EMC 
+[(\222)2 (\201)11 (\032\r)10 (\026)2.1 (\022\b\025)20 (\223)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.937 0 Td
+(\035)Tj
+EMC 
+(\022\024)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.686 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 414 >>BDC 
+BT
+12 0 0 12 72 231.6999 Tm
+[(\r)10 (\026\013)1 (\032\r\027\022\025\b)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.747 0 Td
+(\035)Tj
+EMC 
+[(\021)17 (\032\n\013)20 (\030\025\255)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.956 0 Td
+(\035)Tj
+EMC 
+(\033\030\f)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.62 0 Td
+(\035)Tj
+EMC 
+(\030)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.689 0 Td
+(\035)Tj
+EMC 
+[(\027)22 (\030\240)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.39 0 Td
+(\035)Tj
+EMC 
+[(\022\001\026\025\027\022\024)6 (\022\021)10 (\030)11 (\027\022\032\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+5.54 0 Td
+(\035)Tj
+EMC 
+[(\025\006\n)2 (\215)1 (\026\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.404 0 Td
+(\035)Tj
+EMC 
+[(\022\f\f\006)1 (\026\001)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.792 0 Td
+(\035)Tj
+EMC 
+(\215\255)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.172 0 Td
+(\035)Tj
+EMC 
+(\030)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.689 0 Td
+(\035)Tj
+EMC 
+[(\024)10 (\032\r)10 (\026)2.1 (\022\b\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.022 0 Td
+(\035)Tj
+EMC 
+[(\246\006\r)8 (\022\f\001\022\021)10 (\027\022\032\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+4.719 0 Td
+(\035)Tj
+EMC 
+(\030\025\001)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.765 0 Td
+(\035)Tj
+EMC 
+[(\001\032)1 (\026\f)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.162 0 Td
+(\035)Tj
+EMC 
+(\025\032\027)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+1.577 0 Td
+(\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 415 >>BDC 
+BT
+12 0 0 12 72 215.6999 Tm
+[(\033\030\204)1 (\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.933 0 Td
+(\035)Tj
+EMC 
+(\030)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.689 0 Td
+(\035)Tj
+EMC 
+[(\207)10 (\036\036)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\027)22 (\030\240)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.173 0 Td
+(\035)Tj
+EMC 
+[(\022\001\026\025\027\022\024)6.1 (\022\021)10 (\030)11 (\027\022\032\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+5.54 0 Td
+(\035)Tj
+EMC 
+[(\025\006\n)2 (\215)1 (\026\r)39 (\036)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 416 >>BDC 
+BT
+/T1_1 1 Tf
+12 0 0 12 72 190.6999 Tm
+[(\204\205\002\017\032\002\025)16 (\033\r)12.1 (\032\210\206)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 417 >>BDC 
+BT
+/T1_0 1 Tf
+12 0 0 12 72 171.0999 Tm
+(\245\036\035)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 418 >>BDC 
+BT
+0.15 1 1 0 k
+/T1_2 1 Tf
+12 0 0 12 89 171.0999 Tm
+(\037)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 419 >>BDC 
+BT
+0 0 0 rg
+/T1_0 1 Tf
+/Span<</ActualText<FEFF0020>>> BDC 
+12 0 0 12 94.4838 171.0999 Tm
+(\035)Tj
+EMC 
+[(\235)78 (\030\240)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.546 0 Td
+(\035)Tj
+EMC 
+[(\037\001\026\025\027\022\024)6.1 (\022\021)10 (\030)11 (\027\022\032\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+5.551 0 Td
+(\035)Tj
+EMC 
+[(\025\006\n)2 (\215)1 (\026\r)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 420 >>BDC 
+BT
+/T1_3 1 Tf
+12 0 0 12 72 150.5999 Tm
+[(\b\026\007)20 (\033\035\t)4 (\024)10 (\033\027\036\026\007)15 (\034\016)10 (\036\035)29 (\034\b\033)14 (\031\023)7 (\034\206\034\005)7 (\034\004)73 (\022\205)-7 (\034\027\013\031\026\033\027\016)22 (\027\024)10 (\022)14 (\033\027\036\026)7 (\034\026\t\023)7 (\017)4 (\031\035)-24.9 (\020)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 421 >>BDC 
+BT
+/T1_0 1 Tf
+12 0 0 12 72 130.0999 Tm
+[(\202\025\027)11 (\026\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+2.14 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\027)22 (\030\240)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.39 0 Td
+(\035)Tj
+EMC 
+[(\022\001\026\025\027\022\024)6 (\022\021)10 (\030)11 (\027\022\032\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+5.54 0 Td
+(\035)Tj
+EMC 
+[(\025\006\n)2 (\215)1 (\026\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.404 0 Td
+(\035)Tj
+EMC 
+[(\024)10 (\032\r)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.297 0 Td
+(\035)Tj
+EMC 
+[(\027)2 (\033\026)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.519 0 Td
+(\035)Tj
+EMC 
+[(\r)10 (\026\013)1 (\032\r\027\022\025\b)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.947 0 Td
+(\035)Tj
+EMC 
+[(\021)17 (\032\n\013)20 (\030\025\255)20 (\036)]TJ
+/Span<</ActualText<FEFF00200020>>> BDC 
+(\035\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 422 >>BDC 
+BT
+/T1_1 1 Tf
+12 0 0 12 72 105.0999 Tm
+[(\204\205\002\017\032\002\025)16 (\033\r)12.1 (\032\211\206)]TJ
+ET
+EMC 
+/P <</Lang (en-US)/MCID 423 >>BDC 
+BT
+/T1_0 1 Tf
+12 0 0 12 72 85.4999 Tm
+(\230\036\035)Tj
+ET
+EMC 
+/P <</Lang (en-US)/MCID 424 >>BDC 
+BT
+12 0 0 12 89 85.4999 Tm
+[(\200\032\006\025\027\r)-35.9 (\255)19.9 (\205)80 (\226\006\r)8 (\022\f\001\022\021)10 (\027\022\032\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+8.27 0 Td
+(\035)Tj
+EMC 
+(\211\022\024)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+0.965 0 Td
+(\035)Tj
+EMC 
+[(\024)10 (\032\r)10 (\026)2 (\022\b\025)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+3.022 0 Td
+(\035)Tj
+EMC 
+[(\027)22 (\030\240)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+1.39 0 Td
+(\035)Tj
+EMC 
+(\037\213)Tj
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+[(\032\025)2 (\020\255\212)]TJ
+/Span<</ActualText<FEFF0020>>> BDC 
+(\035)Tj
+EMC 
+ET
+EMC 
+/P <</Lang (en-US)/MCID 425 >>BDC 
+BT
+/T1_4 1 Tf
+12 0 0 12 294.2925 85.4999 Tm
+[(\036\035\034\033\034\032\031\037\030\027\034\037\f)9 (\013)10 (\030\n\037\033\t\035\031\r)]TJ
+ET
+EMC 
