@@ -1,14 +1,25 @@
 from dotenv import load_dotenv
-from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_deepseek import ChatDeepSeek
 
 load_dotenv()
 llm = ChatDeepSeek(model="deepseek-chat")
-msg = [
-    SystemMessage("You are an expert in social media content strategy."),
-    HumanMessage("Give me a short tip to create engaging content in instagram."),
-]
 
-result = llm.invoke(msg)
+system_message = SystemMessage(content="You are helpful AI assistant")
+chat_history = []
+chat_history.append(system_message)
 
-print(result.content)
+while True:
+    query = input("You:")
+    if query.lower() == "exit":
+        break
+    chat_history.append(HumanMessage(content=query))  # adding user message
+    result = llm.invoke(chat_history)
+    resp = result.content
+    chat_history.append(AIMessage(content=resp))
+
+    print(f"AI: {resp}")
+
+
+print("----Message History----")
+print(chat_history)
