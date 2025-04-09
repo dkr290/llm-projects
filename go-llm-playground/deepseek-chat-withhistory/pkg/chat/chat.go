@@ -26,10 +26,12 @@ func New(systemMessage string) *ChatScruct {
 	}
 }
 
-func (c *ChatScruct) DsChat(ctx context.Context) error {
+func (c *ChatScruct) DsChat(ctx context.Context, token string) error {
 	// Initialize the OpenAI client with Deepseek model
 	llm, err := openai.New(
 		openai.WithModel("deepseek-chat"),
+		openai.WithBaseURL("https://api.deepseek.com/v1"),
+		openai.WithToken(token),
 	)
 	if err != nil {
 		return fmt.Errorf("error connectint to deepseek %v", err)
