@@ -3,8 +3,8 @@ package chroma
 import (
 	"context"
 	"fmt"
-	"log"
 
+	"github.com/tmc/langchaingo/embeddings"
 	"github.com/tmc/langchaingo/llms/openai"
 	"github.com/tmc/langchaingo/schema"
 	"github.com/tmc/langchaingo/vectorstores/chroma"
@@ -54,18 +54,36 @@ func (c *ChromaEmbedding) CreateEmbeddings() error {
 		return fmt.Errorf("error connectint to deepseek %v", err)
 	}
 
-	embedings, err := llm.CreateEmbedding(context.Background(), c.doc)
+	// var texts []string
+	//
+	// for _, v := range c.doc {
+	// 	texts = append(texts, v.PageContent)
+	// }
+	//
+	// emb, err := llm.CreateEmbedding(context.Background(), texts)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	//
+	emb, err := embeddings.NewEmbedder(llm)
 	if err != nil {
-		log.Fatal(err)
+		return fmt.Errorf("error new embedder %v", err)
 	}
+
 	fmt.Println("--- Creating vector store ---")
-	_, err = chroma.New(
-		chroma.WithChromaURL(c.chatModel), // or your Chroma server URL
-		chroma.WithEmbedder(embedings),
+	chromaClient, err := chroma.New(
+		chroma.WithChromaURL(c.chatModel),       // or your Chroma server URL
 		chroma.WithNameSpace(c.chromaNamespace), // optional namespace
+		chroma.WithEmbedder(emb),
 	)
 	if err != nil {
 		panic(fmt.Errorf("failed to create vector store: %w", err))
 	}
+
+	_, err = chromaClient.AddDocuments(context.Background(), c.doc)
+	if err != nil {
+		return fmt.Errorf("the add documents error by chroma %v", err)
+	}
+
 	return nil
 }

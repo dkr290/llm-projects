@@ -2,12 +2,16 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"rag-text-chroma/pkg/chroma"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	apiKey := loadEnv()
 	currentDir, err := os.Getwd()
 	if err != nil {
 		panic(err)
@@ -28,6 +32,20 @@ func main() {
 		"https://api.deepseek.com/v1",
 		"http://localhost:8000",
 		"sample_ns",
-		token,
+		apiKey,
 	)
+	err = c.CreateEmbeddings()
+	if err != nil {
+		log.Println(err)
+		return
+	}
+}
+
+func loadEnv() string {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	apiKey := os.Getenv("DEEPSEEK_API_KEY")
+	return apiKey
 }
