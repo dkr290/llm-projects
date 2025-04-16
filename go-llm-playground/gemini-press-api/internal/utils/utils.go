@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"press-detective/internal/models"
+	"gemini-press-api/internal/models"
 	"regexp"
 	"strings"
 

@@ -1,18 +1,15 @@
-package controllers
+package handlers
 
 import (
 	"context"
 	"fmt"
-	"os"
+	"gemini-press-api/internal/logging"
+	"gemini-press-api/internal/models"
+	"gemini-press-api/internal/utils"
 	"time"
-
-	"press-detective/internal/logging"
-	"press-detective/internal/models"
-	"press-detective/internal/utils"
 
 	"github.com/go-fuego/fuego"
 	"github.com/rs/zerolog"
-
 	"google.golang.org/genai"
 )
 
@@ -20,15 +17,11 @@ type AMLController struct {
 	client    *genai.Client
 	logger    zerolog.Logger
 	debugFlag bool
+	model     string
 }
 
-func NewAMLController(debugFlag bool) (*AMLController, error) {
+func NewHandler(debugFlag bool, apiKey string, model string) (*AMLController, error) {
 	logger := logging.NewContextLogger("AMLController")
-	apiKey := os.Getenv("GEMINI_API_KEY")
-	if apiKey == "" {
-		logger.Error().Msg("GEMINI_API_KEY environment variable not set")
-		return nil, fmt.Errorf("GEMINI_API_KEY environment variable not set")
-	}
 
 	client, err := genai.NewClient(context.Background(), &genai.ClientConfig{
 		APIKey:  apiKey,
@@ -43,6 +36,7 @@ func NewAMLController(debugFlag bool) (*AMLController, error) {
 		client:    client,
 		logger:    logger,
 		debugFlag: debugFlag,
+		model:     model,
 	}, nil
 }
 
@@ -62,7 +56,7 @@ func (ac *AMLController) SearchHandler(
 
 	ac.logger.Info().Str("targetName", targetName).Msg("Starting AML check")
 
-	result, err := ac.client.Models.GenerateContent(ctx, "gemini-2.0-flash",
+	result, err := ac.client.Models.GenerateContent(ctx, ac.model,
 		genai.Text(targetName),
 		&genai.GenerateContentConfig{
 			SystemInstruction: &genai.Content{
