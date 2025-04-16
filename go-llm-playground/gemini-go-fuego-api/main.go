@@ -25,7 +25,7 @@ func main() {
 
 		return
 	}
-	resp, err := adverseMediaService.GenerateReport("Who is Someone")
+	resp, err := adverseMediaService.GenerateReport("Someone")
 	if err != nil {
 		if strings.Compare(resp.Summary, "") == 0 {
 			fmt.Println("No response from llm")

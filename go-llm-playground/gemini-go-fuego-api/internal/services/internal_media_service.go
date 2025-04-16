@@ -46,9 +46,12 @@ func (s *service) GenerateReport(targetName string) (*models.SearchResponse, err
 	userContent := []*genai.Part{
 		{Text: prompt},
 	}
-	systemContent := &genai.GenerateContentConfig{
+	systemConfig := &genai.GenerateContentConfig{
 		SystemInstruction: &genai.Content{
 			Parts: []*genai.Part{{Text: systemPrompt}},
+		},
+		Tools: []*genai.Tool{
+			{GoogleSearch: &genai.GoogleSearch{}},
 		},
 	}
 
@@ -56,7 +59,7 @@ func (s *service) GenerateReport(targetName string) (*models.SearchResponse, err
 		ctx,
 		model,
 		[]*genai.Content{{Parts: userContent}},
-		systemContent,
+		systemConfig,
 	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to generate content: %v", err)
