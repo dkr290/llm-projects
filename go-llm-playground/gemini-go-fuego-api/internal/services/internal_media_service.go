@@ -7,11 +7,10 @@ import (
 	"regexp"
 	"strings"
 
-	"google.golang.org/api/option"
 	"google.golang.org/genai"
 )
 
-// Service interface defines the operations for adverse media checking.
+// Service interface defines the operations media checking.
 type Service interface {
 	GenerateReport(targetName string) (*models.SearchResponse, error)
 }
@@ -21,59 +20,48 @@ type service struct {
 	geminiClient *genai.Client
 }
 
-// NewService creates a new adverse media service using the genai client.
+// NewService creates a new adverse media service using the genai client aind accepts api key.
 func NewService(geminiAPIKey string) (Service, error) {
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, option.WithAPIKey(geminiAPIKey))
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		APIKey:  geminiAPIKey,
+		Backend: genai.BackendGeminiAPI,
+	})
 	if err != nil {
 		return nil, fmt.Errorf("error creating Gemini client: %w", err)
 	}
 	return &service{geminiClient: client}, nil
 }
 
-// Define the structure for the Gemini API response (simplified for now)
-// We will be using the genai library's response types.
-
-// Prompt template
-const promptTemplate = `You are an Anti Money Laundering expert analyst who specializes in doing adverse media checks.
-Respond ONLY in the following EXACT format:
-
-red_flag_found: [TRUE|FALSE]
-links: (only if red_flag_found is TRUE)
-- https://example1.com
-- https://example2.com
-summary: (only if red_flag_found is TRUE)
-Brief summary of findings (2-3 sentences maximum)
-
-Search template to use:
-"{TARGET_NAME}" AND (Scam OR Convict OR Fraud OR charged OR Terror OR radical OR guilty OR forced labor OR slavery OR embezzlement OR Scandal OR Theft OR Forgery OR Jailed OR illegal OR Evasion OR drugs OR Abuse OR Misconduct OR Fine OR Sanctions OR Corruption)
-
-Verify any potential red flags by visiting the links before reporting them.
-`
-
 // GenerateReport interacts with the Gemini API to check for adverse media using the genai library.
+// this is where the actual reposnce from gemini is preocessed
 func (s *service) GenerateReport(targetName string) (*models.SearchResponse, error) {
 	ctx := context.Background()
-	model := s.geminiClient.GenerativeModel("gemini-pro") // Or another suitable model
+	model := "gemini-2.0-flash" // Or another suitable model
 
 	prompt := strings.ReplaceAll(promptTemplate, "{TARGET_NAME}", targetName)
 
-	resp, err := model.GenerateContent(ctx,
-		genai.Text(prompt),
-		genai.ToolConfig{
-			FunctionCalling: false, // Explicitly disable function calling for this prompt
-			GoogleSearch:    &genai.GoogleSearchConfig{},
+	userContent := []*genai.Part{
+		{Text: prompt},
+	}
+	systemContent := &genai.GenerateContentConfig{
+		SystemInstruction: &genai.Content{
+			Parts: []*genai.Part{{Text: systemPrompt}},
 		},
-	)
-	if err != nil {
-		return nil, fmt.Errorf("error generating content: %w", err)
 	}
 
+	result, err := s.geminiClient.Models.GenerateContent(
+		ctx,
+		model,
+		[]*genai.Content{{Parts: userContent}},
+		systemContent,
+	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to generate content: %v", err)
+	}
 	var rawLLMResponse string
-	if len(resp.Candidates) > 0 && len(resp.Candidates[0].Content.Parts) > 0 {
-		if textPart, ok := resp.Candidates[0].Content.Parts[0].(genai.Text); ok {
-			rawLLMResponse = string(textPart)
-		}
+	for _, part := range result.Candidates[0].Content.Parts {
+		rawLLMResponse = part.Text
 	}
 
 	// Parse and validate the Gemini response
