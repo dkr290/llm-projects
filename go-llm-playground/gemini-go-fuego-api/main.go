@@ -6,6 +6,7 @@ import (
 	"gemini-go-fuego-api/internal/utils"
 	"log"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -17,6 +18,7 @@ func main() {
 	}
 	adverseMediaService, err := services.NewService(apiKey)
 	if err != nil {
+
 		logger.Error().
 			Str("Error:", err.Error()).
 			Msg("Error initializing Adverse Media Service")
@@ -25,6 +27,11 @@ func main() {
 	}
 	resp, err := adverseMediaService.GenerateReport("Who is Someone")
 	if err != nil {
+		if strings.Compare(resp.Summary, "") == 0 {
+			fmt.Println("No response from llm")
+			return
+		}
+
 		logger.Error().
 			Str("Error:", err.Error()).
 			Msg("Error initializing Adverse Media Service")
@@ -32,8 +39,10 @@ func main() {
 		return
 	}
 
-	fmt.Println("Summary", string(*resp.Summary))
+	fmt.Println("")
+	fmt.Println("Summary", resp.Summary)
+
 	fmt.Println("links", resp.Links)
-	fmt.Println("RedFlags", bool(resp.RedFlagFound))
-	fmt.Println("Raw LLM responce", *resp.RawLLMResponse)
+	fmt.Println("RedFlags", resp.RedFlagFound)
+	fmt.Println("Raw LLM responce", resp.RawLLMResponse)
 }

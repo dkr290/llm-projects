@@ -6,6 +6,7 @@ import (
 	"gemini-go-fuego-api/models"
 	"regexp"
 	"strings"
+	"time"
 
 	"google.golang.org/genai"
 )
@@ -36,7 +37,8 @@ func NewService(geminiAPIKey string) (Service, error) {
 // GenerateReport interacts with the Gemini API to check for adverse media using the genai library.
 // this is where the actual reposnce from gemini is preocessed
 func (s *service) GenerateReport(targetName string) (*models.SearchResponse, error) {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 240*time.Second)
+	defer cancel()
 	model := "gemini-2.0-flash" // Or another suitable model
 
 	prompt := strings.ReplaceAll(promptTemplate, "{TARGET_NAME}", targetName)
@@ -63,6 +65,7 @@ func (s *service) GenerateReport(targetName string) (*models.SearchResponse, err
 	for _, part := range result.Candidates[0].Content.Parts {
 		rawLLMResponse = part.Text
 	}
+	fmt.Println("From func resp ", rawLLMResponse)
 
 	// Parse and validate the Gemini response
 	parsedResponse, err := parseGeminiResponse(rawLLMResponse)
@@ -96,7 +99,7 @@ func parseGeminiResponse(response_text string) (*models.SearchResponse, error) {
 	}
 
 	var links []string
-	var summary *string
+	var summary string
 
 	if redFlagFound {
 		linksSectionMatch := regexp.MustCompile(`links:(?s)(.*?)(summary:|red_flag_found:|\z)(?i)`).
@@ -111,13 +114,13 @@ func parseGeminiResponse(response_text string) (*models.SearchResponse, error) {
 			FindStringSubmatch(responseText)
 		if len(summaryMatch) > 1 {
 			trimmedSummary := strings.TrimSpace(summaryMatch[1])
-			summary = &trimmedSummary
+			summary = trimmedSummary
 		}
 	}
 
 	return &models.SearchResponse{
 		RedFlagFound:   redFlagFound,
-		RawLLMResponse: &rawResponseText,
+		RawLLMResponse: rawResponseText,
 		Links:          links,
 		Summary:        summary,
 	}, nil

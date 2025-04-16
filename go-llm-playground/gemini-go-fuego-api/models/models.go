@@ -8,9 +8,9 @@ type SearchRequest struct {
 // SearchResponse defines the structure for the search response payload.
 type SearchResponse struct {
 	RedFlagFound   bool     `json:"red_flag_found"             example:"true"`
-	RawLLMResponse *string  `json:"raw_llm_response,omitempty" example:"Based on the search results..."   description:"Raw response from the LLM"`
+	RawLLMResponse string   `json:"raw_llm_response,omitempty" example:"Based on the search results..."   description:"Raw response from the LLM"`
 	Links          []string `json:"links,omitempty"            example:"https://example.com/news"         description:"List of relevant links"`
-	Summary        *string  `json:"summary,omitempty"          example:"Found multiple fraud allegations" description:"Summary of the findings"`
+	Summary        string   `json:"summary,omitempty"          example:"Found multiple fraud allegations" description:"Summary of the findings"`
 }
 
 // HealthCheck defines the structure for the health check response.
