@@ -7,13 +7,16 @@ import (
 	"os"
 )
 
-var apiKey string
+var (
+	apiKey string
+	appURL string
+)
 
 func main() {
 	getEnvs()
 	debugFlag := flag.Bool("debugflag", false, "debugflag true or false")
 	model := flag.String("model", "gemini-2.0-flash", "default model to use")
-	addport := flag.String("addport", "0.0.0.0:9999", "default port and address")
+	addport := flag.String("addport", "9999", "default port and address")
 	flag.Parse()
 
 	conf := server.ServerConfig{
@@ -21,6 +24,7 @@ func main() {
 		Model:     *model,
 		DebugFlag: *debugFlag,
 		ApiKey:    apiKey,
+		PublicURL: appURL,
 	}
 	server.Start(conf)
 }
@@ -31,6 +35,11 @@ func getEnvs() {
 	apiKey = os.Getenv("GEMINI_API_KEY")
 	if apiKey == "" {
 		logger.Error().Msg("GEMINI_API_KEY environment variable not set")
-		return
+		os.Exit(1)
+	}
+	appURL = os.Getenv("PUBLIC_URL")
+	if appURL == "" {
+		logger.Error().Msg("We need production URL PUBLIC_URL to be set")
+		os.Exit(1)
 	}
 }
