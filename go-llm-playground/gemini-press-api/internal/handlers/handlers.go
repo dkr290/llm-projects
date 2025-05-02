@@ -17,10 +17,10 @@ type AMLController struct {
 	client    *genai.Client
 	logger    zerolog.Logger
 	debugFlag bool
-	model     string
+	models    []string
 }
 
-func NewHandler(debugFlag bool, apiKey string, model string) (*AMLController, error) {
+func NewHandler(debugFlag bool, apiKey string, models []string) (*AMLController, error) {
 	logger := logging.NewContextLogger("AMLController")
 
 	client, err := genai.NewClient(context.Background(), &genai.ClientConfig{
@@ -36,7 +36,7 @@ func NewHandler(debugFlag bool, apiKey string, model string) (*AMLController, er
 		client:    client,
 		logger:    logger,
 		debugFlag: debugFlag,
-		model:     model,
+		models:    models,
 	}, nil
 }
 
@@ -48,31 +48,34 @@ func (ac *AMLController) SearchHandler(
 
 	body, err := c.Body()
 	if err != nil {
-		ac.logger.Error().Err(err).Msg("Failed to parse payload body")
-		return models.SearchResponse{}, fmt.Errorf("payload unpacking failed")
+		return models.SearchResponse{}, fuego.BadRequestError{
+			Title: "invalid request payload",
+			Err:   err,
+		}
 	}
-
 	targetName := body.TargetName
-
+	if targetName == "" {
+		return models.SearchResponse{}, fuego.BadRequestError{
+			Title: "target name is empty",
+			Err:   err,
+		}
+	}
 	ac.logger.Info().Str("targetName", targetName).Msg("Starting AML check")
 
-	result, err := ac.client.Models.GenerateContent(ctx, ac.model,
-		genai.Text(targetName),
-		&genai.GenerateContentConfig{
-			SystemInstruction: &genai.Content{
-				Parts: []*genai.Part{{Text: utils.GetPromptTemplate()}},
-			},
-			Tools: []*genai.Tool{{
-				GoogleSearch: &genai.GoogleSearch{},
-			}},
-		},
-	)
+	responseText, err := ac.ValidateLanguage(body.Language, targetName, ctx, "", "", true)
 	if err != nil {
-		ac.logger.Error().Err(err).Msg("Gemini API call failed")
-		return models.SearchResponse{}, fmt.Errorf("API call failed")
+		if err.Error() == "not supported language" {
+			return models.SearchResponse{}, fuego.BadRequestError{
+				Title: "Language validation error choose supported language",
+				Err:   err,
+			}
+		} else {
+			return models.SearchResponse{}, fuego.BadRequestError{
+				Title:  "Unknown Error",
+				Detail: err.Error(),
+			}
+		}
 	}
-
-	responseText := utils.ExtractResponseText(result)
 	return utils.ParseGeminiResponse(responseText, ac.logger, ac.debugFlag), nil
 }
 

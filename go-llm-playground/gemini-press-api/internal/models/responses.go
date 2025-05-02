@@ -7,6 +7,7 @@ type MessageResponse struct {
 // SearchRequest defines the structure for the search request payload.
 type SearchRequest struct {
 	TargetName string `json:"target_name"`
+	Language   string `json:"language"    example:"english" description:"Input language english, french"`
 }
 
 // SearchResponse defines the structure for the search response payload.

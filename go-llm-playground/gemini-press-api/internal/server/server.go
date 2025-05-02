@@ -15,7 +15,7 @@ import (
 type ServerConfig struct {
 	AddrPort  string
 	DebugFlag bool
-	Model     string
+	Models    []string
 	ApiKey    string
 	PublicURL string
 }
@@ -36,7 +36,7 @@ type ServerConfig struct {
 // 	})
 // }
 
-// can be done also with this pakage the above will be kept commented out just for the example
+// can be done also with this package the above will be kept commented out just for the example
 func Start(c ServerConfig) {
 	cs := cors.New(cors.Options{
 		AllowedOrigins:   []string{"*"},
@@ -65,7 +65,7 @@ func Start(c ServerConfig) {
 		Description: "localhost",
 	})
 
-	registerRoutes(s, c.DebugFlag, c.ApiKey, c.Model)
+	registerRoutes(s, c.DebugFlag, c.ApiKey, c.Models)
 
 	logging.Logger.Info().
 		Str("address", c.AddrPort).
@@ -78,8 +78,8 @@ func Start(c ServerConfig) {
 	}
 }
 
-func registerRoutes(s *fuego.Server, debugFlag bool, apiKey, model string) {
-	amlController, err := handlers.NewHandler(debugFlag, apiKey, model)
+func registerRoutes(s *fuego.Server, debugFlag bool, apiKey string, models []string) {
+	amlController, err := handlers.NewHandler(debugFlag, apiKey, models)
 	if err != nil {
 		logging.Logger.Fatal().
 			Err(err).
