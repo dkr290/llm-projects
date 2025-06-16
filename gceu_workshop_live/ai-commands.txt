@@ -1,0 +1,126 @@
+Step 1:
+
+- create go project structure for a desktop automation CLI
+- the name of this project is "desktop-automation"
+
+- standard go project layout with cmd/ and internal/ folder
+- main entry point cmd/desktop-automation/main.go
+
+package struture:
+- internal/automation (robotgo wrappers)
+- internal/commands (CLI commands)
+- internal/ui (bubble tea TUI components)
+
+- basic go.mod file, module path github.com/dmahlow/desktop-automation
+- add a .gitignore for Go projects
+- basic Taskfile with build, run, and clean
+- keep things minimal and aligned with the prompt
+- whenever you write comments or readmes: tight, no purple prose, no emojies
+
+
+step 2:
+add cobra cli framework to the project. create:
+
+1. root command in cmd/desktop-automation/main.go with the description "Beautiful Desktop Automation CLI"
+
+2. Command stubs in internal/commands for:
+   - click: "Click at a specific screeen coordinate"
+   - type: "type text at current cursor position"
+   - move: "move the mouse cursor to coordinates"
+   
+3. each commands
+ - short and long description
+ - usage examples
+ - proper error handling setup
+ - placeholders for the actual implemenation
+ 
+ remove any extranous code that doesn't align with the instructions above
+
+
+step 2a:
+do atomic conventional commits until the git workspace is clean
+
+step 3:
+update go.mod to include some dependencies
+
+- robotogo
+- bubbletea
+- lipgloss
+- cobra
+
+Make main.go:
+1 init cobra
+2 execute root command
+3 handle errors gracefully
+4. add version flag showing "v0.1.0"
+
+run go mod tidy to ensure everything 
+
+
+step 4:
+implement the click command with the following requirements:
+
+1. in internal/automation/mouse.go create:
+  - Click(x, y int) error function that wraps robotgo.Click
+  - GetPosition() (x, y, int) function for current mouse position
+  - proper error handling and valiation
+  
+2. in internal/commands/click.go
+  - Accept exactly 2 arguments (x and y coordinates)
+  - validate that both are integers
+  - validate coordinates are non-negative
+  - show current position before click
+  - perform the click using our automation
+  - confirm success with coordinates
+  - Example: "./desktop-automation click 500 300"
+  
+3. Add helpful error messages for common issues, dont go overboard
+
+step 4a: debugging
+desktop-automation git:(main) ✗ task build
+task: [build] go build -o desktop-automation ./cmd/desktop-automation
+# github.com/kbinani/screenshot
+../../../go/pkg/mod/github.com/kbinani/screenshot@v0.0.0-20230812210009-b87d31814237/screenshot_darwin.go:10:9: error: 'CGDisplayCreateImageForRect' is unavailable: obsoleted in macOS 15.0 - Please use ScreenCaptureKit instead.
+   10 |         return CGDisplayCreateImageForRect(display, rect);
+      |                ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGDirectDisplay.h:391:33: note: 'CGDisplayCreateImageForRect' has been explicitly marked unavailable here
+  391 | CG_EXTERN CGImageRef __nullable CGDisplayCreateImageForRect(
+      |                                 ^
+1 error generated.
+task: Failed to run task "build": exit status 1
+
+debug this, tell me what you would fix before you do it
+
+step 4.1
+implement the type command with these features
+
+1. in internal/automation/keyboard.go create:
+  - TypeString(text string) error function using robotgo.TypeStr
+  - TypeStringWithDelay(text string, delayMs int) error
+  - Add safety check for empty strings
+  
+2. in internal/commands/type.go
+ - accept text as single argument (handle multi-word with quotes)
+ - add --delay flag (default 0ms) for typing delay
+ - show success message with character count
+ - example: "./desktop-autoamtion type 'Hello World!'"
+ - example with delay: "./desktop-automation type --delay=50 'Slow typing!'"
+
+
+step 4.2
+implement the move command with smooth movement option:
+
+1. in internal/automation/mouse.go add
+  - Move(x, y, int) error for instant movement
+  - SmoothMove(x, y int, duration float64) error for animated movement
+  - Use robotgo.MoveSmooth for smooth movement
+  
+2. in internal/command/move.go
+  - accept x and y coordinates as args
+  - add --smooth flag to enable smooth movement
+  - add --duration flag (default 1.0 second) for smooth movement duration
+  - show current position and target position
+  - show "Moving..." while moving
+  - confirm the final position
+  - example: "./desktop-automation move 800 600"
+  - exmaple: "./desktop-automation move --smooth --duration 5.0 800 600"

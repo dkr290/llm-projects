@@ -1,0 +1,35 @@
+version: '3'
+
+tasks:
+  build:
+    desc: Build the desktop-automation binary
+    cmds:
+      - go build -o desktop-automation ./cmd/desktop-automation
+
+  run:
+    desc: Run the desktop-automation CLI
+    cmds:
+      - task: build
+      - ./desktop-automation
+
+  clean:
+    desc: Clean build artifacts
+    cmds:
+      - rm -f desktop-automation
+      - go clean
+
+  deps:
+    desc: Download dependencies
+    cmds:
+      - go mod download
+      - go mod tidy
+
+  test:
+    desc: Run tests
+    cmds:
+      - go test ./...
+
+  install:
+    desc: Install the binary to GOPATH/bin
+    cmds:
+      - go install ./cmd/desktop-automation
