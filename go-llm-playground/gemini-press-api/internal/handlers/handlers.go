@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"context"
-	"fmt"
 	"gemini-press-api/internal/logging"
 	"gemini-press-api/internal/models"
 	"gemini-press-api/internal/utils"
@@ -10,33 +9,23 @@ import (
 
 	"github.com/go-fuego/fuego"
 	"github.com/rs/zerolog"
-	"google.golang.org/genai"
 )
 
 type AMLController struct {
-	client    *genai.Client
 	logger    zerolog.Logger
 	debugFlag bool
 	models    []string
+	apiKeys   []string
 }
 
-func NewHandler(debugFlag bool, apiKey string, models []string) (*AMLController, error) {
+func NewHandler(debugFlag bool, apiKeys []string, models []string) (*AMLController, error) {
 	logger := logging.NewContextLogger("AMLController")
 
-	client, err := genai.NewClient(context.Background(), &genai.ClientConfig{
-		APIKey:  apiKey,
-		Backend: genai.BackendGeminiAPI,
-	})
-	if err != nil {
-		logger.Error().Err(err).Msg("Failed to create Gemini client")
-		return nil, fmt.Errorf("failed to create Gemini client: %w", err)
-	}
-
 	return &AMLController{
-		client:    client,
 		logger:    logger,
 		debugFlag: debugFlag,
 		models:    models,
+		apiKeys:   apiKeys,
 	}, nil
 }
 
@@ -80,11 +69,11 @@ func (ac *AMLController) SearchHandler(
 }
 
 func (ac *AMLController) RootHandler(c fuego.ContextNoBody) (models.MessageResponse, error) {
-	ac.logger.Info().Msg("Handling root request")
+	ac.logger.Debug().Msg("Handling root request")
 	return models.MessageResponse{Message: "Hello, from go press detector app!"}, nil
 }
 
 func (ac AMLController) PingHandler(c fuego.ContextNoBody) (models.MessageResponse, error) {
-	ac.logger.Info().Msg("Handling ping request")
+	ac.logger.Debug().Msg("Handling ping request")
 	return models.MessageResponse{Message: "pong"}, nil
 }

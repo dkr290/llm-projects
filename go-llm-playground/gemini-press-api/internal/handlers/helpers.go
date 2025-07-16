@@ -1,9 +1,11 @@
+// Package handlers contains the HTTP handlers for the application.
 package handlers
 
 import (
 	"context"
 	"errors"
 	"fmt"
+	"gemini-press-api/internal/logging"
 	"gemini-press-api/internal/utils"
 	"strings"
 	"time"
@@ -16,38 +18,57 @@ func (ac *AMLController) makeGeminiRequest(
 	targetName string,
 	prompt string,
 ) (string, error) {
-	var (
-		result  *genai.GenerateContentResponse
-		err     error
-		lastErr error
-	)
-
-	for i, modelName := range ac.models {
-		ac.logger.Info().Msg("Attempting to use model " + modelName)
-		result, err = ac.client.Models.GenerateContent(ctx, modelName,
-			genai.Text(targetName),
-			&genai.GenerateContentConfig{
-				SystemInstruction: &genai.Content{
-					Parts: []*genai.Part{{Text: prompt}},
-				},
-				Tools: []*genai.Tool{{
-					GoogleSearch: &genai.GoogleSearch{},
-				}},
-			},
-		)
+	var lastErr error
+	for keyIndex, key := range ac.apiKeys {
+		ac.logger.Info().Msgf("Attempting with API key %d/%d", keyIndex+1, len(ac.apiKeys))
+		client, err := createGeminiClient(key)
 		if err != nil {
-			ac.logger.Error().Err(err).Msg("Gemini API call failed with model " + modelName)
+			ac.logger.Error().
+				Err(err).
+				Msgf("Failed to create client with API key %d/%d", keyIndex+1, len(ac.apiKeys))
 			lastErr = err
-			if i == len(ac.models)-1 {
-				return "", fmt.Errorf("failed to call all models with Gemini API: %w", lastErr)
-			}
 			continue
-		} else {
-			return utils.ExtractResponseText(result), nil
+		}
+		for i, modelName := range ac.models {
+			ac.logger.Info().
+				Msgf("Attempting model %s (%d/%d) with API key %d/%d", modelName, i+1, len(ac.models), keyIndex+1, len(ac.apiKeys))
+
+				// using separate function for gemini to be able to test
+			result, err := generateGeminiResponce(ctx, client, modelName, targetName, prompt)
+
+			if err != nil {
+				ac.logger.Error().
+					Err(err).
+					Msgf("Failed: model %s with API key %d/%d", modelName, keyIndex+1, len(ac.apiKeys))
+				lastErr = err
+				continue
+			} else {
+				ac.logger.Info().Msgf("Success: model %s with API key %d/%d", modelName, keyIndex+1, len(ac.apiKeys))
+				return utils.ExtractResponseText(result), nil
+			}
+
+		}
+		// Only return error if this was the last key
+		if keyIndex == len(ac.apiKeys)-1 {
+			return "", fmt.Errorf("failed to call all models with all API keys: %w", lastErr)
 		}
 
 	}
 	return "", lastErr
+}
+
+func createGeminiClient(key string) (*genai.Client, error) {
+	logger := logging.NewContextLogger("AMLController")
+
+	client, err := genai.NewClient(context.Background(), &genai.ClientConfig{
+		APIKey:  key,
+		Backend: genai.BackendGeminiAPI,
+	})
+	if err != nil {
+		logger.Error().Err(err).Msg("Failed to create Gemini client")
+		return nil, fmt.Errorf("failed to create Gemini client: %w", err)
+	}
+	return client, err
 }
 
 func ValidateDateRange(startDateStr, endDateStr string) (time.Time, time.Time, error) {
@@ -74,9 +95,9 @@ func (ac *AMLController) ValidateLanguage(
 	lang string, targetName string,
 	ctx context.Context, startDate, endDate string, isGeneric bool,
 ) (responseText string, err error) {
-	standardized_lang := strings.ToLower(lang)
+	standardizedLang := strings.ToLower(lang)
 
-	switch standardized_lang {
+	switch standardizedLang {
 
 	case "english":
 		responseText, err = ac.makeGeminiRequest(

@@ -16,7 +16,7 @@ type ServerConfig struct {
 	AddrPort  string
 	DebugFlag bool
 	Models    []string
-	ApiKey    string
+	ApiKeys   []string
 	PublicURL string
 }
 
@@ -36,7 +36,7 @@ type ServerConfig struct {
 // 	})
 // }
 
-// can be done also with this package the above will be kept commented out just for the example
+// Start can be done also with this package the above will be kept commented out just for the example
 func Start(c ServerConfig) {
 	cs := cors.New(cors.Options{
 		AllowedOrigins:   []string{"*"},
@@ -46,6 +46,10 @@ func Start(c ServerConfig) {
 		Debug:            false,
 	})
 	s := fuego.NewServer(
+		fuego.WithLoggingMiddleware(fuego.LoggingConfig{ // Disable Fuego's default logging globally
+			DisableRequest:  true,
+			DisableResponse: true,
+		}),
 		fuego.WithAddr(fmt.Sprintf(":%s", c.AddrPort)),
 		fuego.WithGlobalMiddlewares(cs.Handler),
 		fuego.WithEngineOptions(fuego.WithOpenAPIConfig(fuego.OpenAPIConfig{
@@ -65,7 +69,7 @@ func Start(c ServerConfig) {
 		Description: "localhost",
 	})
 
-	registerRoutes(s, c.DebugFlag, c.ApiKey, c.Models)
+	registerRoutes(s, c.DebugFlag, c.ApiKeys, c.Models)
 
 	logging.Logger.Info().
 		Str("address", c.AddrPort).
@@ -78,7 +82,7 @@ func Start(c ServerConfig) {
 	}
 }
 
-func registerRoutes(s *fuego.Server, debugFlag bool, apiKey string, models []string) {
+func registerRoutes(s *fuego.Server, debugFlag bool, apiKey []string, models []string) {
 	amlController, err := handlers.NewHandler(debugFlag, apiKey, models)
 	if err != nil {
 		logging.Logger.Fatal().

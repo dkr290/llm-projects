@@ -9,7 +9,7 @@ import (
 )
 
 func TestHome(t *testing.T) {
-	h, _ := NewHandler(false, "test", []string{"test"})
+	h, _ := NewHandler(false, []string{"test"}, []string{"test"})
 
 	ctx := fuego.NewMockContextNoBody()
 	response, err := h.RootHandler(ctx)

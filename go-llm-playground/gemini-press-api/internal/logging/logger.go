@@ -1,3 +1,4 @@
+// Package logging is to initialize the logger package
 package logging
 
 import (
@@ -8,12 +9,17 @@ import (
 
 var Logger zerolog.Logger
 
-func init() {
+func Init(debug bool) {
+	level := zerolog.InfoLevel
+	if debug {
+		level = zerolog.DebugLevel
+	}
+
 	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
 	Logger = zerolog.New(zerolog.ConsoleWriter{
 		Out:        os.Stderr,
 		TimeFormat: "2006-01-02 15:04:05",
-	}).With().Timestamp().Logger()
+	}).Level(level).With().Timestamp().Logger()
 }
 
 func NewContextLogger(context string) zerolog.Logger {

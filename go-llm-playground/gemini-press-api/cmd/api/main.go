@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	apiKey    string
+	apiKeys   []string
 	appURL    string
 	modelList []string
 )
@@ -18,18 +18,20 @@ func main() {
 	debugFlag := flag.Bool("debugflag", false, "debugflag true or false")
 	model := flag.String("model", "gemini-2.0-flash", "default model to use")
 	addport := flag.String("addport", "9999", "default port and address")
-	public_url := flag.String(
+	publicURL := flag.String(
 		"publicurl",
 		"https://example.com",
 		"The Public url to use only for production deployments",
 	)
 	flag.Parse()
-	getEnvs()
+	logging.Init(*debugFlag)
+
+	apiKeys = getEnvs()
 
 	if os.Getenv("PUBLIC_URL") != "" {
 		appURL = os.Getenv("PUBLIC_URL")
 	} else {
-		appURL = *public_url
+		appURL = *publicURL
 	}
 	modelList = getModelList()
 	if modelList == nil {
@@ -39,20 +41,23 @@ func main() {
 		AddrPort:  *addport,
 		Models:    modelList,
 		DebugFlag: *debugFlag,
-		ApiKey:    apiKey,
+		ApiKeys:   apiKeys,
 		PublicURL: appURL,
 	}
 	server.Start(conf)
 }
 
-func getEnvs() {
+func getEnvs() []string {
 	logger := logging.NewContextLogger("AMLController")
 
-	apiKey = os.Getenv("GEMINI_API_KEY")
-	if apiKey == "" {
+	apiKeys := os.Getenv("GEMINI_API_KEY")
+	apiKeys = strings.TrimSpace(apiKeys)
+	keyList := strings.Split(apiKeys, ",")
+	if keyList[0] == "" {
 		logger.Error().Msg("GEMINI_API_KEY environment variable not set")
 		os.Exit(1)
 	}
+	return keyList
 }
 
 func getModelList() []string {
