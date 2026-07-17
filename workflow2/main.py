@@ -4,9 +4,28 @@
 from openai import OpenAI
 
 client = OpenAI(base_url="http://192.168.1.101:8080/v1/", api_key="not-needed")
+EXAMPLES_FILE = Path(__file__).with_name("examples.json")
+
+
+def load_examples() -> str:
+    with EXAMPLES_FILE.open(encoding="utf-8") as file:
+        examples = json.load(file)
+
+    return "\n\n".join(
+        f"""<example>
+<topic>
+{example["topic"]}
+</topic>
+<generated-post>
+{example["generated_post"]}
+</generated-post>
+</example>"""
+        for example in examples
+    )
 
 
 def generate_x_post(topic: str) -> str:
+    examples = load_examples()
     prompt = f"""
         You are an expert social media manager, and you excel at crafting viral and highly engaging posts for X (formerly Twitter).
 
@@ -22,19 +41,7 @@ def generate_x_post(topic: str) -> str:
 
        Here are some examples of topic and generated posts:
         <examples>
-            <example-1>
-               <topic>
-                 Open LLMs are great because they are more then enough for many workflows and offer free use & 100% privacy
-
-               </topic>
-               <generated-post>
-                  Yes, Gemini 3.0 is amazing. But for many tasks, it's too expensive and simply overkill.
-
-                  Don't sleep on Open LLMs which you can run locally on your device.
-
-                  Open LLMs like Gemma 3 can be run locally via Ollama or LocalAI or LM studio, offer 100% privacy and more then capable enough for most use-cases and workflows.
-               </generated-post>
-            </example-1>
+        {examples}
         <examples>
         Please use the tone , language , structure and style of the examples provided above to generate a post that is engaging and relevant to the topic.
 """
